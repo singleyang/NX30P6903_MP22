@@ -1,0 +1,16 @@
+#ifndef _PRODUCTVERSION_H_
+#define _PRODUCTVERSION_H_
+
+#define PCA9498_COM_PRODUCT_VER_MAJOR		1
+#define PCA9498_COM_PRODUCT_VER_MINOR		2
+
+#define _STR1(s) #s
+#define _STR(s) _STR1(s)
+
+#define PCA9498_COM_PRODUCT_VER_STR _STR(PCA9498_COM_PRODUCT_VER_MAJOR) "." \
+									_STR(PCA9498_COM_PRODUCT_VER_MINOR) "." \
+									"0" "." \
+									"0" 
+
+#endif //_PRODUCTVERSION_H_
+

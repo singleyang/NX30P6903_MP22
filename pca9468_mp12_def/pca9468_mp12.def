@@ -1,0 +1,24 @@
+LIBRARY pca9468_mp12_def.dll
+EXPORTS
+	pcaGetCaption
+	pcaGetValueCount
+	pcaGetValueText
+	pcaGetCurrentValue
+	pcaGetCurrentText
+	pcaGetRegisterValue
+	pcaRegisterNotification
+	pcaUnregisterNotification
+	pcaReadDataField
+	pcaReadRegister
+	pcaReadAll
+	pcaSetDataField
+	pcaSetRegister
+	pcaWriteDataField
+	pcaWriteRegister
+	pcaWriteAll
+	pcaSetAndWriteDataField
+	pcaSetAndWriteRegister
+	pcaSlaveAddress
+	pcaIsRegisterReadOnly
+	pcaIsDataFieldReadOnly
+	pcaReadRegisters

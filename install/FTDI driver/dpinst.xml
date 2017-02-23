@@ -1,0 +1,22 @@
+<?xml version="1.0" ?> 
+  <dpinst>
+
+    <icon>logo.ico</icon>
+    <watermarkPath>C232HM.bmp</watermarkPath>
+    <headerPath>Logo.bmp</headerPath>
+
+    <suppressAddRemovePrograms/>
+
+    <search> 
+      <subDirectory>*</subDirectory> 
+    </search>
+
+    <language code="0x0409"> 
+      <dpinstTitle>FTDI FT232 Device Driver Installer</dpinstTitle> 
+      <welcomeTitle>Welcome to the FTDI Driver installer for the PCA949x utility!</welcomeTitle> 
+      <welcomeIntro>This wizard will install drivers for FTDI's FT232 device. This may take a few minutes, if your system creates a System Restore Point.</welcomeIntro> 
+      <installHeaderTitle>Installing FTDI drivers.</installHeaderTitle> 
+      <finishTitle>Finished installing FTDI drivers.</finishTitle> 
+    </language>
+
+</dpinst>

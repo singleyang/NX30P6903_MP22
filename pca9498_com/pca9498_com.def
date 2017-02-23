@@ -1,0 +1,11 @@
+LIBRARY pca9498_com.dll
+EXPORTS
+	pc_selectInterface
+	pc_claim
+	pc_release
+	pc_init
+	pc_connected
+	pc_info
+	pc_readRegister
+	pc_writeRegister
+	pc_selectedInterface
