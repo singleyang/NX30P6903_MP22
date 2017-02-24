@@ -20,9 +20,9 @@
 #endif
 
 pca_data_bits_t pca_data_bits_default[] = {
-	/* 00 */ 0x03, 0x00, 0x00, 0x00,
-	/* 04 */ 0x00, 0xFE, 0x2C, 0x8F,
-	/* 08 */ 0xFF, 0xA0
+	/* 00 */ 0x00, 0x00, 0x00, 0x00,
+	/* 04 */ 0xF7, 0x30, 0x00, 0x00,
+	/* 08 */ 0x00, 0xFF
 };
 
 void pca_tf_Three_bits(char *textbuffer, size_t sz, int index)
@@ -45,173 +45,7 @@ void pca_tf_byte(char *textbuffer, size_t sz, int index)
 	}
 }
 
-void pca_tf_vbus_ovp(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			if (index <= 92)
-				sprintf_s(textbuffer, sz, "%0.3fV", 4.2 + (index * 0.025));
-			else
-				sprintf_s(textbuffer, sz, "%s", "Illegal value");
-		}
-	}
-}
-
-void pca_tf_vout_reg(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			if (index <= 80)
-				sprintf_s(textbuffer, sz, "%0.2fV", 4.2 + (index * 0.010));
-			else
-				sprintf_s(textbuffer, sz, "%s", "Illegal value");
-		}
-	}
-}
-
-void pca_tf_ibat_reg(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			if (index <= 127)
-				sprintf_s(textbuffer, sz, "%0.2fA", index * 0.050);
-			else
-				sprintf_s(textbuffer, sz, "%s", "Illegal value");
-		}
-	}
-}
-
-void pca_tf_tbus_reg(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			if (index <= 120)
-				sprintf_s(textbuffer, sz, "%0.2fV", index * 0.020);
-			else
-				sprintf_s(textbuffer, sz, "%s", "Illegal value");
-		}
-	}
-}
-
-void pca_tf_V_adc(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 10) {
-			float val = (index & 0x1FFF);
-			if ((index & 0x8000) == 0x8000) val *= -1;
-			sprintf_s(textbuffer, sz, "%0.3fV", val / 1000);
-		}
-	}
-}
-
-void pca_tf_V10_adc(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 10) {
-			float val = index & 0x3FF;
-			if ((index & 0x8000) == 0x8000) val *= -1;
-			sprintf_s(textbuffer, sz, "%0.3fV", val / 1000);
-		}
-	}
-}
-
-void pca_tf_A_adc(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 10) {
-			float val = index & 0x1FFF;
-			if ((index & 0x8000) == 0x8000) val *= -1;
-			sprintf_s(textbuffer, sz, "%0.3fA", val / 1000);
-		}
-	}
-}
-
-void pca_tf_T_adc(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 10) {
-			float val = index & 0x0FFF;
-			if ((index & 0x8000) == 0x8000) val *= -1;
-			sprintf_s(textbuffer, sz, "%0.3fV", val / 1000);
-		}
-	}
-}
-
-void pca_tf_die_temp(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 10) {
-			sprintf_s(textbuffer, sz, "%d °C", index);
-		}
-	}
-}
-
-void pca_tf_vdrop_ovp(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			if (index <= 200)
-				sprintf_s(textbuffer, sz, "%0.3fV", (index * 0.005));
-			else
-				sprintf_s(textbuffer, sz, "%s", "Illegal value");
-		}
-	}
-}
-
-void pca_tf_Current(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			sprintf_s(textbuffer, sz, "%0.2fA", (index * 10.0) / 1000.0);
-		}
-	}
-}
-
-void pca_tf_OVP_level(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			switch (index)
-			{
-			case 0:
-				sprintf_s(textbuffer, sz, "%s", "Off");
-				break;
-			case 1:
-				sprintf_s(textbuffer, sz, "%s", "15%");
-				break;
-			case 2:
-				sprintf_s(textbuffer, sz, "%s", "20%");
-				break;
-			default:
-				sprintf_s(textbuffer, sz, "%s", "25%");
-				break;
-			}
-		}
-	}
-}
-
-void pca_tf_OCP_level(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 8) {
-			sprintf_s(textbuffer, sz, "%0.1f A", index * 0.5);
-		}
-	}
-}
-
+/*Enable/Disable check box*/
 void pca_tf_En_Dis(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
@@ -225,234 +59,192 @@ void pca_tf_En_Dis(char *textbuffer, size_t sz, int index)
 	}
 }
 
-void pca_tf_OCP_res(char *textbuffer, size_t sz, int index)
+/*ovlo rng cmb*/
+void pca_tf_ovlo_rng(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 14) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Blanking mode");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Hiccup mode");
+		if (sz >= 10) {
+			switch (index){
+				case 0:
+					sprintf_s(textbuffer, sz, "%s", "-600mV");
+					break;
+				case 1:
+					sprintf_s(textbuffer, sz, "%s", "-400mV");
+					break;
+				case 2:
+					sprintf_s(textbuffer, sz, "%s", "-200mV");
+					break;
+				case 3:
+					sprintf_s(textbuffer, sz, "%s", "0mV");
+					break;
+				case 4:
+					sprintf_s(textbuffer, sz, "%s", "200mV");
+					break;
+				case 5:
+					sprintf_s(textbuffer, sz, "%s", "400mV");
+					break;
+				case 6:
+					sprintf_s(textbuffer, sz, "%s", "600mV");
+					break;
+				case 7:
+					sprintf_s(textbuffer, sz, "%s", "800mV");
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }
 
-void pca_tf_vbus_ovp_dly(char *textbuffer, size_t sz, int index)
+/*ovlo ov cmb*/
+void pca_tf_ovlo_thres(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 14) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "4 µs");
-			else
-				sprintf_s(textbuffer, sz, "%s", "20 µs");
-		}
-	}
-}
-
-void pca_tf_adc_samples(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 3) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "8");
-			else
-				sprintf_s(textbuffer, sz, "%s", "16");
-		}
-	}
-}
-
-void pca_tf_adc_rate(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 9) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Single shot");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Continuous");
-		}
-	}
-}
-
-void pca_tf_Irev(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 3) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "0A");
-			else
-				sprintf_s(textbuffer, sz, "%s", "3A");
-		}
-	}
-}
-
-void pca_tf_watchdog(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 9) {
-			switch (index)
-			{
+		if (sz >= 8) {
+			switch (index){
 			case 0:
-				sprintf_s(textbuffer, sz, "%s", "Disabled");
+				sprintf_s(textbuffer, sz, "%s", "6.8V");
 				break;
 			case 1:
-				sprintf_s(textbuffer, sz, "%s", "0.5s");
+				sprintf_s(textbuffer, sz, "%s", "11.5V");
 				break;
 			case 2:
-				sprintf_s(textbuffer, sz, "%s", "1.0s");
+				sprintf_s(textbuffer, sz, "%s", "17V");
+				break;
+			case 3:
+				sprintf_s(textbuffer, sz, "%s", "23V");
 				break;
 			default:
-				sprintf_s(textbuffer, sz, "%s", "2.0s");
 				break;
 			}
 		}
 	}
 }
 
-void pca_tf_sense_R(char *textbuffer, size_t sz, int index)
+/*ovlo sel cmb*/
+void pca_tf_ovlo_sel(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 8) {
+		if (sz >= 25) {
 			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "5 mOhm");
+				sprintf_s(textbuffer, sz, "%s", "OVLO set by ADJ pin");
 			else
-				sprintf_s(textbuffer, sz, "%s", "10 mOhm");
+				sprintf_s(textbuffer, sz, "%s", "OVLO set by I2C reg");
 		}
 	}
 }
 
-void pca_tf_Vbus_OVP(char *textbuffer, size_t sz, int index)
+/*isrc value cmb*/
+void pca_tf_isrc_val(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 21) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "no fault");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Vbus > VBUS_OVP fault");
+		if (sz >= 10) {
+			switch (index){
+				case 0:sprintf_s(textbuffer, sz, "%s", "0uA"); break;
+				case 1:sprintf_s(textbuffer, sz, "%s", "1uA"); break;
+				case 2:sprintf_s(textbuffer, sz, "%s", "2uA"); break;
+				case 3:sprintf_s(textbuffer, sz, "%s", "3uA"); break;
+				case 4:sprintf_s(textbuffer, sz, "%s", "4uA"); break;
+				case 5:sprintf_s(textbuffer, sz, "%s", "5uA"); break;
+				case 6:sprintf_s(textbuffer, sz, "%s", "10uA"); break;
+				case 7:sprintf_s(textbuffer, sz, "%s", "20uA"); break;
+				case 8:sprintf_s(textbuffer, sz, "%s", "50uA"); break;
+				case 9:sprintf_s(textbuffer, sz, "%s", "100uA"); break;
+				case 10:sprintf_s(textbuffer, sz, "%s", "200uA"); break;
+				case 11:sprintf_s(textbuffer, sz, "%s", "500uA"); break;
+				case 12:sprintf_s(textbuffer, sz, "%s", "1000uA"); break;
+				case 13:sprintf_s(textbuffer, sz, "%s", "2000uA"); break;
+				case 14:sprintf_s(textbuffer, sz, "%s", "5000uA"); break;
+				case 15:sprintf_s(textbuffer, sz, "%s", "10000uA"); break;
+				default: break;
+			}
 		}
 	}
 }
 
-void pca_tf_regulation(char *textbuffer, size_t sz, int index)
+/*isrc value cmb*/
+void pca_tf_isrc_tdet(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 22) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "not in regulation mode");
-			else
-				sprintf_s(textbuffer, sz, "%s", "in regulation mode");
+		if (sz >= 12) {
+			switch (index){
+				case 0:sprintf_s(textbuffer, sz, "%s", "200us"); break;
+				case 1:sprintf_s(textbuffer, sz, "%s", "400us"); break;
+				case 2:sprintf_s(textbuffer, sz, "%s", "1000us"); break;
+				case 3:sprintf_s(textbuffer, sz, "%s", "2000us"); break;
+				case 4:sprintf_s(textbuffer, sz, "%s", "4000us"); break;
+				case 5:sprintf_s(textbuffer, sz, "%s", "10ms"); break;
+				case 6:sprintf_s(textbuffer, sz, "%s", "20ms"); break;
+				case 7:sprintf_s(textbuffer, sz, "%s", "40ms"); break;
+				case 8:sprintf_s(textbuffer, sz, "%s", "100ms"); break;
+				case 9:sprintf_s(textbuffer, sz, "%s", "200ms"); break;
+				case 10:sprintf_s(textbuffer, sz, "%s", "400ms"); break;
+				case 11:sprintf_s(textbuffer, sz, "%s", "1000ms"); break;
+				case 12:sprintf_s(textbuffer, sz, "%s", "2000ms"); break;
+				case 13:sprintf_s(textbuffer, sz, "%s", "4000ms"); break;
+				case 14:sprintf_s(textbuffer, sz, "%s", "10s"); break;
+				case 15:sprintf_s(textbuffer, sz, "%s", "Always On"); break;
+				default: break;
+			}
 		}
 	}
 }
 
-void pca_tf_no_yes(char *textbuffer, size_t sz, int index)
+/*duty cmb*/
+void pca_tf_duty(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 4) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "No");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Yes");
+		if (sz >= 12) {
+			switch (index){
+			case 0:sprintf_s(textbuffer, sz, "%s", "Single Pulse"); break;
+			case 1:sprintf_s(textbuffer, sz, "%s", "10ms"); break;
+			case 2:sprintf_s(textbuffer, sz, "%s", "20ms"); break;
+			case 3:sprintf_s(textbuffer, sz, "%s", "50ms"); break;
+			case 4:sprintf_s(textbuffer, sz, "%s", "100ms"); break;
+			case 5:sprintf_s(textbuffer, sz, "%s", "200ms"); break;
+			case 6:sprintf_s(textbuffer, sz, "%s", "500ms"); break;
+			case 7:sprintf_s(textbuffer, sz, "%s", "1000ms"); break;
+			case 8:sprintf_s(textbuffer, sz, "%s", "2000ms"); break;
+			case 9:sprintf_s(textbuffer, sz, "%s", "3000ms"); break;
+			case 10:sprintf_s(textbuffer, sz, "%s", "6000ms"); break;
+			case 11:sprintf_s(textbuffer, sz, "%s", "12000ms"); break;
+			case 12:sprintf_s(textbuffer, sz, "%s", "30000ms"); break;
+			case 13:sprintf_s(textbuffer, sz, "%s", "60000ms"); break;
+			case 14:sprintf_s(textbuffer, sz, "%s", "12s"); break;
+			case 15:sprintf_s(textbuffer, sz, "%s", "30s"); break;
+			default: break;
+			}
 		}
 	}
 }
 
-void pca_tf_temperature(char *textbuffer, size_t sz, int index)
+/*Vin Tag trackbar*/
+void pca_tf_tag_vin(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 9) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Ok");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Too high");
+		if (sz >= 10) {
+			if (index <= 0xff)
+				/*range from 0 - 29.000V with 5mV per step*/
+				sprintf_s(textbuffer, sz, "%0.3fV", (index * 0.1133));
 		}
 	}
 }
 
-void pca_adc_done(char *textbuffer, size_t sz, int index)
+/*ADC Voltage text*/
+void pca_tf_vin_adc(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
-		if (sz >= 13) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Not complete");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Completed");
-		}
-	}
-}
-
-void pca_tf_wd(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 23) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Disabled or not expired");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Expired");
-		}
-	}
-}
-
-void pca_tf_unset_set(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 9) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Not set");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Set");
-		}
-	}
-}
-
-void pca_tf_vbusbat_ins(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 13) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Not present");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Present");
-		}
-	}
-}
-
-void pca_tf_tshut(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 27) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Ok. < 125°C");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Too high. Thermal shutdown");
-		}
-	}
-}
-
-void pca_tf_Ibus(char *textbuffer, size_t sz, int index)
-{
-	if (textbuffer && sz > 0) {
-		*textbuffer = '\0';
-		if (sz >= 20) {
-			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Within limits");
-			else
-				sprintf_s(textbuffer, sz, "%s", "Over current fault!");
+		if (sz >= 10) {
+			float val = (index & 0xFF);
+			sprintf_s(textbuffer, sz, "%0.3fV", val*0.1133);
 		}
 	}
 }
@@ -477,14 +269,14 @@ pca_data_field_t pca_DataFields[] = {
 	{ 0x04, 2, 1, 0, ov_mask, "Over Voltage Int Mask", pca_tf_En_Dis },
 	{ 0x04, 1, 1, 0, oc_mask, "Over Current Int Mask", pca_tf_En_Dis },
 	{ 0x04, 0, 1, 0, ot_mask, "Over Temperature Int Mask", pca_tf_En_Dis },
-	{ 0x05, 4, 3, 0, ovlo_rng, "OVLO Fine Tune", pca_tf_Vbus_OVP },
-	{ 0x05, 3, 1, 0, ovlo_sel, "OVLO Adj Selection", pca_tf_regulation },
-	{ 0x05, 0, 2, 0, ovlo_ov, "OVLO Threshold", pca_tf_regulation },
-	{ 0x06, 0, 4, 0, isrc_val , "Isource Current", pca_tf_regulation },
-	{ 0x07, 4, 4, 0, isrc_det, "Isource Pulse Width", pca_tf_regulation },
-	{ 0x07, 0, 4, 0, vin_duty, "Vin Duty Cycle", pca_tf_temperature },
-	{ 0x08, 0, 8, 0, adc_vin, "Vin Voltage", pca_tf_temperature },
-	{ 0x09, 0, 8, 0, tag_vin, "Vin Tag", pca_tf_no_yes },
+	{ 0x05, 4, 3, 0, ovlo_rng, "OVLO Fine Tune", pca_tf_ovlo_rng },
+	{ 0x05, 3, 1, 0, ovlo_sel, "OVLO Adj Selection", pca_tf_ovlo_sel },
+	{ 0x05, 0, 2, 0, ovlo_ov, "OVLO Threshold", pca_tf_ovlo_thres },
+	{ 0x06, 0, 4, 0, isrc_val, "Isource Current", pca_tf_isrc_val },
+	{ 0x07, 4, 4, 0, isrc_det, "Isource Pulse Width", pca_tf_isrc_tdet },
+	{ 0x07, 0, 4, 0, vin_duty, "Vin Duty Cycle", pca_tf_duty },
+	{ 0x08, 0, 8, 0, adc_vin, "Vin Voltage", pca_tf_vin_adc },
+	{ 0x09, 0, 8, 0, tag_vin, "Vin Tag", pca_tf_tag_vin },
 	/* Registers 10 registers in total */
 	{ 0x00, 0, 8, 0, reg_0, "DEVICE_INFO", pca_tf_byte },
 	{ 0x01, 0, 8, 0, reg_1, "ENABLE REG", pca_tf_byte },
