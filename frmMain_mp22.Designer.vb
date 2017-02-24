@@ -706,7 +706,7 @@ Partial Class frmMain_mp22
         'lblVinTagRegVal
         '
         Me.lblVinTagRegVal.AutoSize = True
-        Me.lblVinTagRegVal.Location = New System.Drawing.Point(424, 217)
+        Me.lblVinTagRegVal.Location = New System.Drawing.Point(430, 210)
         Me.lblVinTagRegVal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblVinTagRegVal.Name = "lblVinTagRegVal"
         Me.lblVinTagRegVal.Size = New System.Drawing.Size(17, 17)
@@ -716,7 +716,7 @@ Partial Class frmMain_mp22
         'trbVinTagReg
         '
         Me.trbVinTagReg.AutoSize = False
-        Me.trbVinTagReg.Location = New System.Drawing.Point(140, 210)
+        Me.trbVinTagReg.Location = New System.Drawing.Point(150, 210)
         Me.trbVinTagReg.Margin = New System.Windows.Forms.Padding(4)
         Me.trbVinTagReg.Name = "trbVinTagReg"
         Me.trbVinTagReg.Size = New System.Drawing.Size(276, 31)
@@ -776,7 +776,7 @@ Partial Class frmMain_mp22
         'cmbOvloThres
         '
         Me.cmbOvloThres.FormattingEnabled = True
-        Me.cmbOvloThres.Location = New System.Drawing.Point(140, 74)
+        Me.cmbOvloThres.Location = New System.Drawing.Point(160, 73)
         Me.cmbOvloThres.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbOvloThres.Name = "cmbOvloThres"
         Me.cmbOvloThres.Size = New System.Drawing.Size(156, 24)
@@ -795,7 +795,7 @@ Partial Class frmMain_mp22
         'cmbOvloSel
         '
         Me.cmbOvloSel.FormattingEnabled = True
-        Me.cmbOvloSel.Location = New System.Drawing.Point(140, 42)
+        Me.cmbOvloSel.Location = New System.Drawing.Point(160, 41)
         Me.cmbOvloSel.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbOvloSel.Name = "cmbOvloSel"
         Me.cmbOvloSel.Size = New System.Drawing.Size(156, 24)
@@ -814,7 +814,7 @@ Partial Class frmMain_mp22
         'cmbOvloRng
         '
         Me.cmbOvloRng.FormattingEnabled = True
-        Me.cmbOvloRng.Location = New System.Drawing.Point(140, 8)
+        Me.cmbOvloRng.Location = New System.Drawing.Point(160, 7)
         Me.cmbOvloRng.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbOvloRng.Name = "cmbOvloRng"
         Me.cmbOvloRng.Size = New System.Drawing.Size(156, 24)
@@ -979,7 +979,7 @@ Partial Class frmMain_mp22
         'cmbIsrcVal
         '
         Me.cmbIsrcVal.FormattingEnabled = True
-        Me.cmbIsrcVal.Location = New System.Drawing.Point(140, 108)
+        Me.cmbIsrcVal.Location = New System.Drawing.Point(160, 107)
         Me.cmbIsrcVal.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbIsrcVal.Name = "cmbIsrcVal"
         Me.cmbIsrcVal.Size = New System.Drawing.Size(156, 24)
@@ -988,7 +988,7 @@ Partial Class frmMain_mp22
         'cmbIsrcDet
         '
         Me.cmbIsrcDet.FormattingEnabled = True
-        Me.cmbIsrcDet.Location = New System.Drawing.Point(140, 139)
+        Me.cmbIsrcDet.Location = New System.Drawing.Point(160, 138)
         Me.cmbIsrcDet.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbIsrcDet.Name = "cmbIsrcDet"
         Me.cmbIsrcDet.Size = New System.Drawing.Size(156, 24)
@@ -997,7 +997,7 @@ Partial Class frmMain_mp22
         'cmbVinDuty
         '
         Me.cmbVinDuty.FormattingEnabled = True
-        Me.cmbVinDuty.Location = New System.Drawing.Point(140, 171)
+        Me.cmbVinDuty.Location = New System.Drawing.Point(160, 170)
         Me.cmbVinDuty.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbVinDuty.Name = "cmbVinDuty"
         Me.cmbVinDuty.Size = New System.Drawing.Size(156, 24)
