@@ -14,6 +14,7 @@
 #ifdef _DEBUG
 //#define PCA9498_AUTO_INC          0x00
 #define PCA9498_AUTO_INC          0x80
+#define MP22_AUTO_INC			0x00
 #else
 #define PCA9498_AUTO_INC          0x80
 #define MP22_AUTO_INC			0x00
@@ -22,7 +23,8 @@
 pca_data_bits_t pca_data_bits_default[] = {
 	/* 00 */ 0x00, 0x00, 0x00, 0x00,
 	/* 04 */ 0xF7, 0x30, 0x00, 0x00,
-	/* 08 */ 0x00, 0xFF
+	/* 08 */ 0x00, 0xFF, 0x00, 0x00,
+	/* 0C */ 0x00, 0x00, 0x00, 0x02
 };
 
 void pca_tf_Three_bits(char *textbuffer, size_t sz, int index)
@@ -224,6 +226,46 @@ void pca_tf_duty(char *textbuffer, size_t sz, int index)
 	}
 }
 
+
+/*additional ovp cmb*/
+void pca_tf_adt_ovp(char *textbuffer, size_t sz, int index)
+{
+	if (textbuffer && sz > 0) {
+		*textbuffer = '\0';
+		if (sz >= 18) {
+			switch (index){
+			case 0:sprintf_s(textbuffer, sz, "%s", "OVP Set by OVLO"); break;
+			case 1:sprintf_s(textbuffer, sz, "%s", "OVP Set by OVLO"); break;
+			case 2:sprintf_s(textbuffer, sz, "%s", "10V"); break;
+			case 3:sprintf_s(textbuffer, sz, "%s", "14V"); break;
+			default: break;
+			}
+		}
+	}
+}
+
+/*slew rate tune cmb*/
+void pca_tf_sr_tune(char *textbuffer, size_t sz, int index)
+{
+	if (textbuffer && sz > 0) {
+		*textbuffer = '\0';
+		if (sz >= 6) {
+			switch (index){
+			case 0:sprintf_s(textbuffer, sz, "%s", "0.5ms"); break;
+			case 1:sprintf_s(textbuffer, sz, "%s", "1ms"); break;
+			case 2:sprintf_s(textbuffer, sz, "%s", "1.5ms"); break;
+			case 3:sprintf_s(textbuffer, sz, "%s", "2ms"); break;
+			case 4:sprintf_s(textbuffer, sz, "%s", "2.5ms"); break;
+			case 5:sprintf_s(textbuffer, sz, "%s", "3ms"); break;
+			case 6:sprintf_s(textbuffer, sz, "%s", "3.5ms"); break;
+			case 7:sprintf_s(textbuffer, sz, "%s", "4ms"); break;
+			default: break;
+			}
+		}
+	}
+}
+
+
 /*Vin Tag trackbar*/
 void pca_tf_tag_vin(char *textbuffer, size_t sz, int index)
 {
@@ -248,6 +290,8 @@ void pca_tf_vin_adc(char *textbuffer, size_t sz, int index)
 		}
 	}
 }
+
+
 
 pca_data_field_t pca_DataFields[] = {
 	/*10 datafiled in total*/
@@ -277,8 +321,10 @@ pca_data_field_t pca_DataFields[] = {
 	{ 0x07, 0, 4, 0, vin_duty, "Vin Duty Cycle", pca_tf_duty },
 	{ 0x08, 0, 8, 0, adc_vin, "Vin Voltage", pca_tf_vin_adc },
 	{ 0x09, 0, 8, 0, tag_vin, "Vin Tag", pca_tf_tag_vin },
+	{ 0x0e, 0, 2, 0, adt_ovp, "Additional OVP", pca_tf_adt_ovp},
+	{ 0x0f, 0, 3, 0, sr_tune, "Slew Rate Tuning", pca_tf_sr_tune},
 	/* Registers 10 registers in total */
-	{ 0x00, 0, 8, 0, reg_0, "DEVICE_INFO", pca_tf_byte },
+	{ 0x00, 0, 8, 0, reg_0, "DEVICE INFO", pca_tf_byte },
 	{ 0x01, 0, 8, 0, reg_1, "ENABLE REG", pca_tf_byte },
 	{ 0x02, 0, 8, 0, reg_2, "STATUS REG", pca_tf_byte },
 	{ 0x03, 0, 8, 0, reg_3, "FLAG", pca_tf_byte },
@@ -288,6 +334,12 @@ pca_data_field_t pca_DataFields[] = {
 	{ 0x07, 0, 8, 0, reg_7, "ISRC WORKING TIME", pca_tf_byte },
 	{ 0x08, 0, 8, 0, reg_8, "VOLTAGE TO VIN", pca_tf_byte },
 	{ 0x09, 0, 8, 0, reg_9, "SET TAG ON VIN", pca_tf_byte },
+	{ 0x0A, 0, 8, 0, reg_9, "RESERVED", pca_tf_byte },
+	{ 0x0B, 0, 8, 0, reg_9, "RESERVED", pca_tf_byte },
+	{ 0x0C, 0, 8, 0, reg_9, "RESERVED", pca_tf_byte },
+	{ 0x0D, 0, 8, 0, reg_9, "RESERVED", pca_tf_byte },
+	{ 0x0E, 0, 8, 0, reg_9, "ADDITIONAL OVP", pca_tf_byte },
+	{ 0x0F, 0, 8, 0, reg_9, "SLEW RATE TUNE", pca_tf_byte }
 };
 
 pca_register_t pca_registers[] = {
@@ -300,5 +352,11 @@ pca_register_t pca_registers[] = {
 	{ false, MP22_AUTO_INC | 0x06, 8, pca_data_bits_default[6] },
 	{ false, MP22_AUTO_INC | 0x07, 8, pca_data_bits_default[7] },
 	{ true,  MP22_AUTO_INC | 0x08, 8, pca_data_bits_default[8] },
-	{ false, MP22_AUTO_INC | 0x09, 8, pca_data_bits_default[9] }
+	{ false, MP22_AUTO_INC | 0x09, 8, pca_data_bits_default[9] },
+	{ true,  MP22_AUTO_INC | 0x0A, 8, pca_data_bits_default[10] },
+	{ true,  MP22_AUTO_INC | 0x0B, 8, pca_data_bits_default[11] },
+	{ true,  MP22_AUTO_INC | 0x0C, 8, pca_data_bits_default[12] },
+	{ true,  MP22_AUTO_INC | 0x0D, 8, pca_data_bits_default[13] },
+	{ false, MP22_AUTO_INC | 0x0E, 8, pca_data_bits_default[14] },
+	{ false, MP22_AUTO_INC | 0x0F, 8, pca_data_bits_default[15] }
 };

@@ -291,6 +291,7 @@ pca_result_t pcaWriteRegister(int regNumber) {
 	return result;
 }
 
+/*this function need to be customized for different IC*/
 pca_result_t pcaWriteAll() {
 	//pca_result_t result = pca_ok;
 	//unsigned int idx;
@@ -302,6 +303,30 @@ pca_result_t pcaWriteAll() {
 	unsigned int idx, offset;
 	uint8_t data[0xFF];
 	offset = 0;
+#if 1
+	data[offset++] = (pca_registers[0x01].data_bits & 0xFF);
+	/*Write 0x01 Enable Register*/
+	result = pc_writeRegister(gSla, 0x01, data, 1) == pc_ok ? pca_ok : pca_writeFailed;
+	if (result == pca_ok) {
+		/*Write 0x04-0x07 Int Mask|OVLO|Isrc2Vin|IsrcTime| */
+		for (idx = 4; idx < 0x8; idx++) {
+			data[offset++] = (pca_registers[idx].data_bits & 0xFF);
+		}
+		/* Need to check whether tranfer correct data?*/
+		result = pc_writeRegister(gSla, 0x04, data, 0x04) == pc_ok ? pca_ok : pca_writeFailed;
+	}
+	data[offset++] = (pca_registers[0x09].data_bits & 0xFF);
+	/*Write 0x09 Enable Register*/
+	result = pc_writeRegister(gSla, 0x09, data, 1) == pc_ok ? pca_ok : pca_writeFailed;
+	if (result == pca_ok) {
+		/*Write 0x0E-0x0F Int Mask|OVLO|Isrc2Vin|IsrcTime| */
+		for (idx = 0x0E; idx < 0x10; idx++) {
+			data[offset++] = (pca_registers[idx].data_bits & 0xFF);
+		}
+		result = pc_writeRegister(gSla, 0x0E, data, 0x02) == pc_ok ? pca_ok : pca_writeFailed;
+	}
+
+#else
 	for (idx = 1; idx < 3; idx++) {
 		data[offset++] = (pca_registers[idx].data_bits & 0xFF);
 	}
@@ -313,6 +338,7 @@ pca_result_t pcaWriteAll() {
 		}
 		result = pc_writeRegister(gSla, 0x85, data, 0x13 - 5) == pc_ok ? pca_ok : pca_writeFailed;
 	}
+#endif
 	return result;
 }
 
