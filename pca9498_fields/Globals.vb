@@ -26,6 +26,8 @@ Public Enum pca_data_fields_enum_t
     vin_duty
     adc_vin
     tag_vin
+    adt_ovp
+    sr_tune
 	reg_0
 	reg_1
 	reg_2
@@ -35,7 +37,13 @@ Public Enum pca_data_fields_enum_t
 	reg_6
 	reg_7
 	reg_8
-	reg_9
+    reg_9
+    reg_a
+    reg_b
+    reg_c
+    reg_d
+    reg_e
+    reg_f
 	number_of_dataFields
 End Enum
 
