@@ -80,6 +80,10 @@ Public Class frmMain_mp22
         v = New View(lblVinTagRegVal, pca_data_fields_enum_t.tag_vin)
         lblVinAdc.Text = Model.Caption(pca_data_fields_enum_t.adc_vin)
         v = New View(txtVinAdc, pca_data_fields_enum_t.adc_vin)
+        lblAVOP.Text = Model.Caption(pca_data_fields_enum_t.adt_ovp)
+        v = New View(cmbAVOP, pca_data_fields_enum_t.adt_ovp)
+        lblSRTune.Text = Model.Caption(pca_data_fields_enum_t.sr_tune)
+        v = New View(cmbSRTune, pca_data_fields_enum_t.sr_tune)
     End Sub
 
     Private Property USB_connected As Boolean
@@ -182,8 +186,10 @@ Public Class frmMain_mp22
         '    End If
         'Next
         ScheduleStatusRead()
-        If Model.ReadRegisters(3, 2) = Model.pca_result_t.pca_ok Then
-            If Model.ReadRegisters(19, 9) = Model.pca_result_t.pca_ok Then
+        'read 0x02 and 0x03
+        If Model.ReadRegisters(2, 2) = Model.pca_result_t.pca_ok Then
+            'read 0x08'
+            If Model.ReadRegisters(8, 1) = Model.pca_result_t.pca_ok Then
                 Exit Sub
             End If
         End If
@@ -331,7 +337,7 @@ Public Class frmMain_mp22
         Dim row As Integer = 0, col As Integer = 0, offset As Integer = 0
         Dim txt As TextBox, lblRegName As Label
         Dim v As View
-        For fld As pca_data_fields_enum_t = pca_data_fields_enum_t.reg_0 To pca_data_fields_enum_t.reg_9
+        For fld As pca_data_fields_enum_t = pca_data_fields_enum_t.reg_0 To pca_data_fields_enum_t.reg_f
             lblRegName = New Label With {.Location = New Point(col * 187 + xOffset, 3 + yOffset + 24 * row), .Size = New Size(126, 20)}
             txt = New TextBox With {.Location = New Point(col * 187 + xOffset + 134, yOffset + 24 * row), .Size = New Size(40, 20)}
             v = New View(txt, fld)
@@ -373,4 +379,27 @@ Public Class frmMain_mp22
         SetView(ViewEnum.ve_RegisterMap)
     End Sub
 
+    Private Sub btnCtrlRead_Click(sender As Object, e As EventArgs) Handles btnCtrlRead.Click
+        ReadAll()
+    End Sub
+
+    Private Sub btnCtrlSet_Click(sender As Object, e As EventArgs) Handles btnCtrlSet.Click
+        WriteAll()
+    End Sub
+
+    Private Sub btnReadInt_Click(sender As Object, e As EventArgs) Handles btnReadInt.Click
+        ReadAll()
+    End Sub
+
+    Private Sub btnSetInt_Click(sender As Object, e As EventArgs) Handles btnSetInt.Click
+        WriteAll()
+    End Sub
+
+    Private Sub btnVinDetCtrlRead_Click(sender As Object, e As EventArgs) Handles btnVinDetCtrlRead.Click
+        ReadAll()
+    End Sub
+
+    Private Sub btnVinDetCtrlSet_Click(sender As Object, e As EventArgs) Handles btnVinDetCtrlSet.Click
+        WriteAll()
+    End Sub
 End Class

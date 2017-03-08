@@ -66,29 +66,19 @@ Partial Class frmMain_mp22
         Me.tsbRefresh = New System.Windows.Forms.ToolStripLabel()
         Me.tscRefresh = New System.Windows.Forms.ToolStripComboBox()
         Me.pnlFunctions = New System.Windows.Forms.Panel()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.grpRaised = New System.Windows.Forms.GroupBox()
         Me.chkSwitchOnSts = New System.Windows.Forms.CheckBox()
         Me.chkTimeOutSts = New System.Windows.Forms.CheckBox()
         Me.chkOverTagSts = New System.Windows.Forms.CheckBox()
         Me.chkPwrOnSts = New System.Windows.Forms.CheckBox()
-        Me.grpRaised = New System.Windows.Forms.GroupBox()
         Me.chkOTflag = New System.Windows.Forms.CheckBox()
         Me.chkOCflag = New System.Windows.Forms.CheckBox()
         Me.chkOVflag = New System.Windows.Forms.CheckBox()
-        Me.grpAdcChannels = New System.Windows.Forms.GroupBox()
-        Me.lblVinAdc = New System.Windows.Forms.Label()
-        Me.txtVinAdc = New System.Windows.Forms.TextBox()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
-        Me.tbpControl = New System.Windows.Forms.TabPage()
+        Me.OvpOpCtrl = New System.Windows.Forms.TabPage()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.btnCtrlRead = New System.Windows.Forms.Button()
         Me.btnCtrlSet = New System.Windows.Forms.Button()
-        Me.chkDetectEn = New System.Windows.Forms.CheckBox()
-        Me.lblVinTagRegVal = New System.Windows.Forms.Label()
-        Me.trbVinTagReg = New System.Windows.Forms.TrackBar()
-        Me.lblVinTagReg = New System.Windows.Forms.Label()
-        Me.lblVinDutyReg = New System.Windows.Forms.Label()
-        Me.lblIsrcDetReg = New System.Windows.Forms.Label()
-        Me.lblIsrcReg = New System.Windows.Forms.Label()
         Me.chkVoutEn = New System.Windows.Forms.CheckBox()
         Me.cmbOvloThres = New System.Windows.Forms.ComboBox()
         Me.lblOvloThres = New System.Windows.Forms.Label()
@@ -96,6 +86,23 @@ Partial Class frmMain_mp22
         Me.lblOvloSel = New System.Windows.Forms.Label()
         Me.cmbOvloRng = New System.Windows.Forms.ComboBox()
         Me.lblOvloRng = New System.Windows.Forms.Label()
+        Me.VinDectCtrl = New System.Windows.Forms.TabPage()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.btnVinDetCtrlRead = New System.Windows.Forms.Button()
+        Me.btnVinDetCtrlSet = New System.Windows.Forms.Button()
+        Me.grpAdcChannels = New System.Windows.Forms.GroupBox()
+        Me.lblVinAdc = New System.Windows.Forms.Label()
+        Me.txtVinAdc = New System.Windows.Forms.TextBox()
+        Me.cmbVinDuty = New System.Windows.Forms.ComboBox()
+        Me.cmbIsrcDet = New System.Windows.Forms.ComboBox()
+        Me.cmbIsrcVal = New System.Windows.Forms.ComboBox()
+        Me.chkDetectEn = New System.Windows.Forms.CheckBox()
+        Me.lblVinTagRegVal = New System.Windows.Forms.Label()
+        Me.trbVinTagReg = New System.Windows.Forms.TrackBar()
+        Me.lblVinTagReg = New System.Windows.Forms.Label()
+        Me.lblVinDutyReg = New System.Windows.Forms.Label()
+        Me.lblIsrcDetReg = New System.Windows.Forms.Label()
+        Me.lblIsrcReg = New System.Windows.Forms.Label()
         Me.Interrupt = New System.Windows.Forms.TabPage()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnReadInt = New System.Windows.Forms.Button()
@@ -109,19 +116,20 @@ Partial Class frmMain_mp22
         Me.chkOverTagMask = New System.Windows.Forms.CheckBox()
         Me.pnlRegisters = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.cmbIsrcVal = New System.Windows.Forms.ComboBox()
-        Me.cmbIsrcDet = New System.Windows.Forms.ComboBox()
-        Me.cmbVinDuty = New System.Windows.Forms.ComboBox()
+        Me.cmbAVOP = New System.Windows.Forms.ComboBox()
+        Me.lblAVOP = New System.Windows.Forms.Label()
+        Me.cmbSRTune = New System.Windows.Forms.ComboBox()
+        Me.lblSRTune = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         Me.grpDevice.SuspendLayout()
         Me.TheMenu.SuspendLayout()
         Me.theToolbar.SuspendLayout()
         Me.pnlFunctions.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
         Me.grpRaised.SuspendLayout()
-        Me.grpAdcChannels.SuspendLayout()
         Me.TabControl2.SuspendLayout()
-        Me.tbpControl.SuspendLayout()
+        Me.OvpOpCtrl.SuspendLayout()
+        Me.VinDectCtrl.SuspendLayout()
+        Me.grpAdcChannels.SuspendLayout()
         CType(Me.trbVinTagReg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Interrupt.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -481,77 +489,20 @@ Partial Class frmMain_mp22
         '
         'pnlFunctions
         '
-        Me.pnlFunctions.Controls.Add(Me.GroupBox1)
         Me.pnlFunctions.Controls.Add(Me.grpRaised)
-        Me.pnlFunctions.Controls.Add(Me.grpAdcChannels)
         Me.pnlFunctions.Controls.Add(Me.TabControl2)
         Me.pnlFunctions.Location = New System.Drawing.Point(1, 121)
         Me.pnlFunctions.Margin = New System.Windows.Forms.Padding(4)
         Me.pnlFunctions.Name = "pnlFunctions"
-        Me.pnlFunctions.Size = New System.Drawing.Size(780, 427)
+        Me.pnlFunctions.Size = New System.Drawing.Size(780, 429)
         Me.pnlFunctions.TabIndex = 27
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.chkSwitchOnSts)
-        Me.GroupBox1.Controls.Add(Me.chkTimeOutSts)
-        Me.GroupBox1.Controls.Add(Me.chkOverTagSts)
-        Me.GroupBox1.Controls.Add(Me.chkPwrOnSts)
-        Me.GroupBox1.Location = New System.Drawing.Point(16, 146)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(229, 182)
-        Me.GroupBox1.TabIndex = 31
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Status"
-        '
-        'chkSwitchOnSts
-        '
-        Me.chkSwitchOnSts.Location = New System.Drawing.Point(19, 114)
-        Me.chkSwitchOnSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkSwitchOnSts.Name = "chkSwitchOnSts"
-        Me.chkSwitchOnSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
-        Me.chkSwitchOnSts.Size = New System.Drawing.Size(192, 21)
-        Me.chkSwitchOnSts.TabIndex = 39
-        Me.chkSwitchOnSts.Text = "SWON_STS"
-        Me.chkSwitchOnSts.UseVisualStyleBackColor = True
-        '
-        'chkTimeOutSts
-        '
-        Me.chkTimeOutSts.Location = New System.Drawing.Point(19, 87)
-        Me.chkTimeOutSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkTimeOutSts.Name = "chkTimeOutSts"
-        Me.chkTimeOutSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
-        Me.chkTimeOutSts.Size = New System.Drawing.Size(192, 21)
-        Me.chkTimeOutSts.TabIndex = 38
-        Me.chkTimeOutSts.Text = "TMR_OUT_STS"
-        Me.chkTimeOutSts.UseVisualStyleBackColor = True
-        '
-        'chkOverTagSts
-        '
-        Me.chkOverTagSts.Location = New System.Drawing.Point(19, 59)
-        Me.chkOverTagSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkOverTagSts.Name = "chkOverTagSts"
-        Me.chkOverTagSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
-        Me.chkOverTagSts.Size = New System.Drawing.Size(192, 21)
-        Me.chkOverTagSts.TabIndex = 37
-        Me.chkOverTagSts.Text = "OVER_TAG_STS"
-        Me.chkOverTagSts.UseVisualStyleBackColor = True
-        '
-        'chkPwrOnSts
-        '
-        Me.chkPwrOnSts.Location = New System.Drawing.Point(19, 31)
-        Me.chkPwrOnSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.chkPwrOnSts.Name = "chkPwrOnSts"
-        Me.chkPwrOnSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
-        Me.chkPwrOnSts.Size = New System.Drawing.Size(192, 21)
-        Me.chkPwrOnSts.TabIndex = 36
-        Me.chkPwrOnSts.Text = "PWRON_STS"
-        Me.chkPwrOnSts.UseVisualStyleBackColor = True
         '
         'grpRaised
         '
+        Me.grpRaised.Controls.Add(Me.chkSwitchOnSts)
+        Me.grpRaised.Controls.Add(Me.chkTimeOutSts)
+        Me.grpRaised.Controls.Add(Me.chkOverTagSts)
+        Me.grpRaised.Controls.Add(Me.chkPwrOnSts)
         Me.grpRaised.Controls.Add(Me.chkOTflag)
         Me.grpRaised.Controls.Add(Me.chkOCflag)
         Me.grpRaised.Controls.Add(Me.chkOVflag)
@@ -559,10 +510,54 @@ Partial Class frmMain_mp22
         Me.grpRaised.Margin = New System.Windows.Forms.Padding(4)
         Me.grpRaised.Name = "grpRaised"
         Me.grpRaised.Padding = New System.Windows.Forms.Padding(4)
-        Me.grpRaised.Size = New System.Drawing.Size(229, 134)
+        Me.grpRaised.Size = New System.Drawing.Size(229, 403)
         Me.grpRaised.TabIndex = 28
         Me.grpRaised.TabStop = False
         Me.grpRaised.Text = "Raised interrupts"
+        '
+        'chkSwitchOnSts
+        '
+        Me.chkSwitchOnSts.Location = New System.Drawing.Point(19, 195)
+        Me.chkSwitchOnSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkSwitchOnSts.Name = "chkSwitchOnSts"
+        Me.chkSwitchOnSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
+        Me.chkSwitchOnSts.Size = New System.Drawing.Size(192, 21)
+        Me.chkSwitchOnSts.TabIndex = 43
+        Me.chkSwitchOnSts.Text = "SWON_STS"
+        Me.chkSwitchOnSts.UseVisualStyleBackColor = True
+        '
+        'chkTimeOutSts
+        '
+        Me.chkTimeOutSts.Location = New System.Drawing.Point(19, 168)
+        Me.chkTimeOutSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkTimeOutSts.Name = "chkTimeOutSts"
+        Me.chkTimeOutSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
+        Me.chkTimeOutSts.Size = New System.Drawing.Size(192, 21)
+        Me.chkTimeOutSts.TabIndex = 42
+        Me.chkTimeOutSts.Text = "TMR_OUT_STS"
+        Me.chkTimeOutSts.UseVisualStyleBackColor = True
+        '
+        'chkOverTagSts
+        '
+        Me.chkOverTagSts.Location = New System.Drawing.Point(19, 140)
+        Me.chkOverTagSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkOverTagSts.Name = "chkOverTagSts"
+        Me.chkOverTagSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
+        Me.chkOverTagSts.Size = New System.Drawing.Size(192, 21)
+        Me.chkOverTagSts.TabIndex = 41
+        Me.chkOverTagSts.Text = "OVER_TAG_STS"
+        Me.chkOverTagSts.UseVisualStyleBackColor = True
+        '
+        'chkPwrOnSts
+        '
+        Me.chkPwrOnSts.Location = New System.Drawing.Point(19, 112)
+        Me.chkPwrOnSts.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.chkPwrOnSts.Name = "chkPwrOnSts"
+        Me.chkPwrOnSts.Padding = New System.Windows.Forms.Padding(1, 0, 0, 0)
+        Me.chkPwrOnSts.Size = New System.Drawing.Size(192, 21)
+        Me.chkPwrOnSts.TabIndex = 40
+        Me.chkPwrOnSts.Text = "PWRON_STS"
+        Me.chkPwrOnSts.UseVisualStyleBackColor = True
         '
         'chkOTflag
         '
@@ -597,15 +592,206 @@ Partial Class frmMain_mp22
         Me.chkOVflag.Text = "OV Int"
         Me.chkOVflag.UseVisualStyleBackColor = True
         '
+        'TabControl2
+        '
+        Me.TabControl2.AllowDrop = True
+        Me.TabControl2.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
+        Me.TabControl2.Controls.Add(Me.OvpOpCtrl)
+        Me.TabControl2.Controls.Add(Me.VinDectCtrl)
+        Me.TabControl2.Controls.Add(Me.Interrupt)
+        Me.TabControl2.Location = New System.Drawing.Point(249, 11)
+        Me.TabControl2.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl2.Name = "TabControl2"
+        Me.TabControl2.SelectedIndex = 0
+        Me.TabControl2.Size = New System.Drawing.Size(517, 396)
+        Me.TabControl2.TabIndex = 29
+        '
+        'OvpOpCtrl
+        '
+        Me.OvpOpCtrl.BackColor = System.Drawing.SystemColors.Control
+        Me.OvpOpCtrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.OvpOpCtrl.Controls.Add(Me.cmbSRTune)
+        Me.OvpOpCtrl.Controls.Add(Me.lblSRTune)
+        Me.OvpOpCtrl.Controls.Add(Me.cmbAVOP)
+        Me.OvpOpCtrl.Controls.Add(Me.lblAVOP)
+        Me.OvpOpCtrl.Controls.Add(Me.Label3)
+        Me.OvpOpCtrl.Controls.Add(Me.btnCtrlRead)
+        Me.OvpOpCtrl.Controls.Add(Me.btnCtrlSet)
+        Me.OvpOpCtrl.Controls.Add(Me.chkVoutEn)
+        Me.OvpOpCtrl.Controls.Add(Me.cmbOvloThres)
+        Me.OvpOpCtrl.Controls.Add(Me.lblOvloThres)
+        Me.OvpOpCtrl.Controls.Add(Me.cmbOvloSel)
+        Me.OvpOpCtrl.Controls.Add(Me.lblOvloSel)
+        Me.OvpOpCtrl.Controls.Add(Me.cmbOvloRng)
+        Me.OvpOpCtrl.Controls.Add(Me.lblOvloRng)
+        Me.OvpOpCtrl.Location = New System.Drawing.Point(4, 28)
+        Me.OvpOpCtrl.Margin = New System.Windows.Forms.Padding(4)
+        Me.OvpOpCtrl.Name = "OvpOpCtrl"
+        Me.OvpOpCtrl.Padding = New System.Windows.Forms.Padding(4)
+        Me.OvpOpCtrl.Size = New System.Drawing.Size(509, 364)
+        Me.OvpOpCtrl.TabIndex = 1
+        Me.OvpOpCtrl.Text = "OVP Operation Control"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(23, 23)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(153, 17)
+        Me.Label3.TabIndex = 59
+        Me.Label3.Text = "OVP Operation Control"
+        '
+        'btnCtrlRead
+        '
+        Me.btnCtrlRead.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCtrlRead.Location = New System.Drawing.Point(315, 317)
+        Me.btnCtrlRead.Name = "btnCtrlRead"
+        Me.btnCtrlRead.Size = New System.Drawing.Size(83, 28)
+        Me.btnCtrlRead.TabIndex = 55
+        Me.btnCtrlRead.Text = "Read"
+        Me.btnCtrlRead.UseVisualStyleBackColor = True
+        '
+        'btnCtrlSet
+        '
+        Me.btnCtrlSet.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnCtrlSet.Location = New System.Drawing.Point(404, 317)
+        Me.btnCtrlSet.Name = "btnCtrlSet"
+        Me.btnCtrlSet.Size = New System.Drawing.Size(83, 28)
+        Me.btnCtrlSet.TabIndex = 54
+        Me.btnCtrlSet.Text = "Set"
+        Me.btnCtrlSet.UseVisualStyleBackColor = True
+        '
+        'chkVoutEn
+        '
+        Me.chkVoutEn.AutoSize = True
+        Me.chkVoutEn.Location = New System.Drawing.Point(380, 60)
+        Me.chkVoutEn.Margin = New System.Windows.Forms.Padding(4)
+        Me.chkVoutEn.Name = "chkVoutEn"
+        Me.chkVoutEn.Size = New System.Drawing.Size(80, 21)
+        Me.chkVoutEn.TabIndex = 15
+        Me.chkVoutEn.Text = "Vout En"
+        Me.chkVoutEn.UseVisualStyleBackColor = True
+        '
+        'cmbOvloThres
+        '
+        Me.cmbOvloThres.FormattingEnabled = True
+        Me.cmbOvloThres.Location = New System.Drawing.Point(171, 121)
+        Me.cmbOvloThres.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbOvloThres.Name = "cmbOvloThres"
+        Me.cmbOvloThres.Size = New System.Drawing.Size(156, 24)
+        Me.cmbOvloThres.TabIndex = 6
+        '
+        'lblOvloThres
+        '
+        Me.lblOvloThres.AutoSize = True
+        Me.lblOvloThres.Location = New System.Drawing.Point(23, 128)
+        Me.lblOvloThres.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblOvloThres.Name = "lblOvloThres"
+        Me.lblOvloThres.Size = New System.Drawing.Size(100, 17)
+        Me.lblOvloThres.TabIndex = 5
+        Me.lblOvloThres.Text = "OV_Threshold"
+        '
+        'cmbOvloSel
+        '
+        Me.cmbOvloSel.FormattingEnabled = True
+        Me.cmbOvloSel.Location = New System.Drawing.Point(171, 89)
+        Me.cmbOvloSel.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbOvloSel.Name = "cmbOvloSel"
+        Me.cmbOvloSel.Size = New System.Drawing.Size(156, 24)
+        Me.cmbOvloSel.TabIndex = 4
+        '
+        'lblOvloSel
+        '
+        Me.lblOvloSel.AutoSize = True
+        Me.lblOvloSel.Location = New System.Drawing.Point(23, 94)
+        Me.lblOvloSel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblOvloSel.Name = "lblOvloSel"
+        Me.lblOvloSel.Size = New System.Drawing.Size(62, 17)
+        Me.lblOvloSel.TabIndex = 3
+        Me.lblOvloSel.Text = "OV_SEL"
+        '
+        'cmbOvloRng
+        '
+        Me.cmbOvloRng.FormattingEnabled = True
+        Me.cmbOvloRng.Location = New System.Drawing.Point(171, 58)
+        Me.cmbOvloRng.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbOvloRng.Name = "cmbOvloRng"
+        Me.cmbOvloRng.Size = New System.Drawing.Size(156, 24)
+        Me.cmbOvloRng.TabIndex = 2
+        '
+        'lblOvloRng
+        '
+        Me.lblOvloRng.AutoSize = True
+        Me.lblOvloRng.Location = New System.Drawing.Point(23, 60)
+        Me.lblOvloRng.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblOvloRng.Name = "lblOvloRng"
+        Me.lblOvloRng.Size = New System.Drawing.Size(86, 17)
+        Me.lblOvloRng.TabIndex = 1
+        Me.lblOvloRng.Text = "OVLO_RNG"
+        '
+        'VinDectCtrl
+        '
+        Me.VinDectCtrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.VinDectCtrl.Controls.Add(Me.Label6)
+        Me.VinDectCtrl.Controls.Add(Me.btnVinDetCtrlRead)
+        Me.VinDectCtrl.Controls.Add(Me.btnVinDetCtrlSet)
+        Me.VinDectCtrl.Controls.Add(Me.grpAdcChannels)
+        Me.VinDectCtrl.Controls.Add(Me.cmbVinDuty)
+        Me.VinDectCtrl.Controls.Add(Me.cmbIsrcDet)
+        Me.VinDectCtrl.Controls.Add(Me.cmbIsrcVal)
+        Me.VinDectCtrl.Controls.Add(Me.chkDetectEn)
+        Me.VinDectCtrl.Controls.Add(Me.lblVinTagRegVal)
+        Me.VinDectCtrl.Controls.Add(Me.trbVinTagReg)
+        Me.VinDectCtrl.Controls.Add(Me.lblVinTagReg)
+        Me.VinDectCtrl.Controls.Add(Me.lblVinDutyReg)
+        Me.VinDectCtrl.Controls.Add(Me.lblIsrcDetReg)
+        Me.VinDectCtrl.Controls.Add(Me.lblIsrcReg)
+        Me.VinDectCtrl.Location = New System.Drawing.Point(4, 28)
+        Me.VinDectCtrl.Name = "VinDectCtrl"
+        Me.VinDectCtrl.Padding = New System.Windows.Forms.Padding(3)
+        Me.VinDectCtrl.Size = New System.Drawing.Size(509, 364)
+        Me.VinDectCtrl.TabIndex = 3
+        Me.VinDectCtrl.Text = "Vin Dection Control"
+        Me.VinDectCtrl.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(23, 23)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(141, 17)
+        Me.Label6.TabIndex = 71
+        Me.Label6.Text = "Vin Detection Control"
+        '
+        'btnVinDetCtrlRead
+        '
+        Me.btnVinDetCtrlRead.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnVinDetCtrlRead.Location = New System.Drawing.Point(315, 317)
+        Me.btnVinDetCtrlRead.Name = "btnVinDetCtrlRead"
+        Me.btnVinDetCtrlRead.Size = New System.Drawing.Size(83, 28)
+        Me.btnVinDetCtrlRead.TabIndex = 70
+        Me.btnVinDetCtrlRead.Text = "Read"
+        Me.btnVinDetCtrlRead.UseVisualStyleBackColor = True
+        '
+        'btnVinDetCtrlSet
+        '
+        Me.btnVinDetCtrlSet.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnVinDetCtrlSet.Location = New System.Drawing.Point(404, 317)
+        Me.btnVinDetCtrlSet.Name = "btnVinDetCtrlSet"
+        Me.btnVinDetCtrlSet.Size = New System.Drawing.Size(83, 28)
+        Me.btnVinDetCtrlSet.TabIndex = 69
+        Me.btnVinDetCtrlSet.Text = "Set"
+        Me.btnVinDetCtrlSet.UseVisualStyleBackColor = True
+        '
         'grpAdcChannels
         '
         Me.grpAdcChannels.Controls.Add(Me.lblVinAdc)
         Me.grpAdcChannels.Controls.Add(Me.txtVinAdc)
-        Me.grpAdcChannels.Location = New System.Drawing.Point(15, 340)
+        Me.grpAdcChannels.Location = New System.Drawing.Point(26, 234)
         Me.grpAdcChannels.Margin = New System.Windows.Forms.Padding(4)
         Me.grpAdcChannels.Name = "grpAdcChannels"
         Me.grpAdcChannels.Padding = New System.Windows.Forms.Padding(4)
-        Me.grpAdcChannels.Size = New System.Drawing.Size(230, 73)
+        Me.grpAdcChannels.Size = New System.Drawing.Size(273, 107)
         Me.grpAdcChannels.TabIndex = 30
         Me.grpAdcChannels.TabStop = False
         Me.grpAdcChannels.Text = "ADC channels"
@@ -629,206 +815,102 @@ Partial Class frmMain_mp22
         Me.txtVinAdc.Size = New System.Drawing.Size(89, 22)
         Me.txtVinAdc.TabIndex = 22
         '
-        'TabControl2
+        'cmbVinDuty
         '
-        Me.TabControl2.Appearance = System.Windows.Forms.TabAppearance.FlatButtons
-        Me.TabControl2.Controls.Add(Me.tbpControl)
-        Me.TabControl2.Controls.Add(Me.Interrupt)
-        Me.TabControl2.Location = New System.Drawing.Point(249, 11)
-        Me.TabControl2.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl2.Name = "TabControl2"
-        Me.TabControl2.SelectedIndex = 0
-        Me.TabControl2.Size = New System.Drawing.Size(517, 321)
-        Me.TabControl2.TabIndex = 29
+        Me.cmbVinDuty.FormattingEnabled = True
+        Me.cmbVinDuty.Location = New System.Drawing.Point(171, 130)
+        Me.cmbVinDuty.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbVinDuty.Name = "cmbVinDuty"
+        Me.cmbVinDuty.Size = New System.Drawing.Size(156, 24)
+        Me.cmbVinDuty.TabIndex = 68
         '
-        'tbpControl
+        'cmbIsrcDet
         '
-        Me.tbpControl.BackColor = System.Drawing.SystemColors.Control
-        Me.tbpControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.tbpControl.Controls.Add(Me.cmbVinDuty)
-        Me.tbpControl.Controls.Add(Me.cmbIsrcDet)
-        Me.tbpControl.Controls.Add(Me.cmbIsrcVal)
-        Me.tbpControl.Controls.Add(Me.btnCtrlRead)
-        Me.tbpControl.Controls.Add(Me.btnCtrlSet)
-        Me.tbpControl.Controls.Add(Me.chkDetectEn)
-        Me.tbpControl.Controls.Add(Me.lblVinTagRegVal)
-        Me.tbpControl.Controls.Add(Me.trbVinTagReg)
-        Me.tbpControl.Controls.Add(Me.lblVinTagReg)
-        Me.tbpControl.Controls.Add(Me.lblVinDutyReg)
-        Me.tbpControl.Controls.Add(Me.lblIsrcDetReg)
-        Me.tbpControl.Controls.Add(Me.lblIsrcReg)
-        Me.tbpControl.Controls.Add(Me.chkVoutEn)
-        Me.tbpControl.Controls.Add(Me.cmbOvloThres)
-        Me.tbpControl.Controls.Add(Me.lblOvloThres)
-        Me.tbpControl.Controls.Add(Me.cmbOvloSel)
-        Me.tbpControl.Controls.Add(Me.lblOvloSel)
-        Me.tbpControl.Controls.Add(Me.cmbOvloRng)
-        Me.tbpControl.Controls.Add(Me.lblOvloRng)
-        Me.tbpControl.Location = New System.Drawing.Point(4, 28)
-        Me.tbpControl.Margin = New System.Windows.Forms.Padding(4)
-        Me.tbpControl.Name = "tbpControl"
-        Me.tbpControl.Padding = New System.Windows.Forms.Padding(4)
-        Me.tbpControl.Size = New System.Drawing.Size(509, 289)
-        Me.tbpControl.TabIndex = 1
-        Me.tbpControl.Text = "Control"
+        Me.cmbIsrcDet.FormattingEnabled = True
+        Me.cmbIsrcDet.Location = New System.Drawing.Point(171, 92)
+        Me.cmbIsrcDet.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbIsrcDet.Name = "cmbIsrcDet"
+        Me.cmbIsrcDet.Size = New System.Drawing.Size(156, 24)
+        Me.cmbIsrcDet.TabIndex = 67
         '
-        'btnCtrlRead
+        'cmbIsrcVal
         '
-        Me.btnCtrlRead.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnCtrlRead.Location = New System.Drawing.Point(329, 253)
-        Me.btnCtrlRead.Name = "btnCtrlRead"
-        Me.btnCtrlRead.Size = New System.Drawing.Size(83, 28)
-        Me.btnCtrlRead.TabIndex = 55
-        Me.btnCtrlRead.Text = "Read"
-        Me.btnCtrlRead.UseVisualStyleBackColor = True
-        '
-        'btnCtrlSet
-        '
-        Me.btnCtrlSet.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnCtrlSet.Location = New System.Drawing.Point(418, 253)
-        Me.btnCtrlSet.Name = "btnCtrlSet"
-        Me.btnCtrlSet.Size = New System.Drawing.Size(83, 28)
-        Me.btnCtrlSet.TabIndex = 54
-        Me.btnCtrlSet.Text = "Set"
-        Me.btnCtrlSet.UseVisualStyleBackColor = True
+        Me.cmbIsrcVal.FormattingEnabled = True
+        Me.cmbIsrcVal.Location = New System.Drawing.Point(171, 58)
+        Me.cmbIsrcVal.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbIsrcVal.Name = "cmbIsrcVal"
+        Me.cmbIsrcVal.Size = New System.Drawing.Size(156, 24)
+        Me.cmbIsrcVal.TabIndex = 66
         '
         'chkDetectEn
         '
         Me.chkDetectEn.AutoSize = True
-        Me.chkDetectEn.Location = New System.Drawing.Point(355, 39)
+        Me.chkDetectEn.Location = New System.Drawing.Point(380, 60)
         Me.chkDetectEn.Margin = New System.Windows.Forms.Padding(4)
         Me.chkDetectEn.Name = "chkDetectEn"
         Me.chkDetectEn.Size = New System.Drawing.Size(92, 21)
-        Me.chkDetectEn.TabIndex = 53
+        Me.chkDetectEn.TabIndex = 65
         Me.chkDetectEn.Text = "DETC_En"
         Me.chkDetectEn.UseVisualStyleBackColor = True
         '
         'lblVinTagRegVal
         '
         Me.lblVinTagRegVal.AutoSize = True
-        Me.lblVinTagRegVal.Location = New System.Drawing.Point(430, 210)
+        Me.lblVinTagRegVal.Location = New System.Drawing.Point(446, 173)
         Me.lblVinTagRegVal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblVinTagRegVal.Name = "lblVinTagRegVal"
         Me.lblVinTagRegVal.Size = New System.Drawing.Size(17, 17)
-        Me.lblVinTagRegVal.TabIndex = 52
+        Me.lblVinTagRegVal.TabIndex = 64
         Me.lblVinTagRegVal.Text = "V"
         '
         'trbVinTagReg
         '
         Me.trbVinTagReg.AutoSize = False
-        Me.trbVinTagReg.Location = New System.Drawing.Point(150, 210)
+        Me.trbVinTagReg.Location = New System.Drawing.Point(162, 169)
         Me.trbVinTagReg.Margin = New System.Windows.Forms.Padding(4)
         Me.trbVinTagReg.Name = "trbVinTagReg"
         Me.trbVinTagReg.Size = New System.Drawing.Size(276, 31)
-        Me.trbVinTagReg.TabIndex = 51
+        Me.trbVinTagReg.TabIndex = 63
         '
         'lblVinTagReg
         '
         Me.lblVinTagReg.AutoSize = True
-        Me.lblVinTagReg.Location = New System.Drawing.Point(12, 217)
+        Me.lblVinTagReg.Location = New System.Drawing.Point(23, 173)
         Me.lblVinTagReg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblVinTagReg.Name = "lblVinTagReg"
         Me.lblVinTagReg.Size = New System.Drawing.Size(39, 17)
-        Me.lblVinTagReg.TabIndex = 50
+        Me.lblVinTagReg.TabIndex = 62
         Me.lblVinTagReg.Text = "TVIN"
         '
         'lblVinDutyReg
         '
         Me.lblVinDutyReg.AutoSize = True
-        Me.lblVinDutyReg.Location = New System.Drawing.Point(13, 173)
+        Me.lblVinDutyReg.Location = New System.Drawing.Point(23, 133)
         Me.lblVinDutyReg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblVinDutyReg.Name = "lblVinDutyReg"
         Me.lblVinDutyReg.Size = New System.Drawing.Size(46, 17)
-        Me.lblVinDutyReg.TabIndex = 47
+        Me.lblVinDutyReg.TabIndex = 61
         Me.lblVinDutyReg.Text = "DUTY"
         '
         'lblIsrcDetReg
         '
         Me.lblIsrcDetReg.AutoSize = True
-        Me.lblIsrcDetReg.Location = New System.Drawing.Point(12, 141)
+        Me.lblIsrcDetReg.Location = New System.Drawing.Point(23, 95)
         Me.lblIsrcDetReg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblIsrcDetReg.Name = "lblIsrcDetReg"
         Me.lblIsrcDetReg.Size = New System.Drawing.Size(45, 17)
-        Me.lblIsrcDetReg.TabIndex = 44
+        Me.lblIsrcDetReg.TabIndex = 60
         Me.lblIsrcDetReg.Text = "TDET"
         '
         'lblIsrcReg
         '
         Me.lblIsrcReg.AutoSize = True
-        Me.lblIsrcReg.Location = New System.Drawing.Point(12, 110)
+        Me.lblIsrcReg.Location = New System.Drawing.Point(23, 60)
         Me.lblIsrcReg.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblIsrcReg.Name = "lblIsrcReg"
         Me.lblIsrcReg.Size = New System.Drawing.Size(79, 17)
-        Me.lblIsrcReg.TabIndex = 16
+        Me.lblIsrcReg.TabIndex = 59
         Me.lblIsrcReg.Text = "ISRC Value"
-        '
-        'chkVoutEn
-        '
-        Me.chkVoutEn.AutoSize = True
-        Me.chkVoutEn.Location = New System.Drawing.Point(355, 10)
-        Me.chkVoutEn.Margin = New System.Windows.Forms.Padding(4)
-        Me.chkVoutEn.Name = "chkVoutEn"
-        Me.chkVoutEn.Size = New System.Drawing.Size(80, 21)
-        Me.chkVoutEn.TabIndex = 15
-        Me.chkVoutEn.Text = "Vout En"
-        Me.chkVoutEn.UseVisualStyleBackColor = True
-        '
-        'cmbOvloThres
-        '
-        Me.cmbOvloThres.FormattingEnabled = True
-        Me.cmbOvloThres.Location = New System.Drawing.Point(160, 73)
-        Me.cmbOvloThres.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbOvloThres.Name = "cmbOvloThres"
-        Me.cmbOvloThres.Size = New System.Drawing.Size(156, 24)
-        Me.cmbOvloThres.TabIndex = 6
-        '
-        'lblOvloThres
-        '
-        Me.lblOvloThres.AutoSize = True
-        Me.lblOvloThres.Location = New System.Drawing.Point(12, 78)
-        Me.lblOvloThres.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblOvloThres.Name = "lblOvloThres"
-        Me.lblOvloThres.Size = New System.Drawing.Size(100, 17)
-        Me.lblOvloThres.TabIndex = 5
-        Me.lblOvloThres.Text = "OV_Threshold"
-        '
-        'cmbOvloSel
-        '
-        Me.cmbOvloSel.FormattingEnabled = True
-        Me.cmbOvloSel.Location = New System.Drawing.Point(160, 41)
-        Me.cmbOvloSel.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbOvloSel.Name = "cmbOvloSel"
-        Me.cmbOvloSel.Size = New System.Drawing.Size(156, 24)
-        Me.cmbOvloSel.TabIndex = 4
-        '
-        'lblOvloSel
-        '
-        Me.lblOvloSel.AutoSize = True
-        Me.lblOvloSel.Location = New System.Drawing.Point(12, 44)
-        Me.lblOvloSel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblOvloSel.Name = "lblOvloSel"
-        Me.lblOvloSel.Size = New System.Drawing.Size(62, 17)
-        Me.lblOvloSel.TabIndex = 3
-        Me.lblOvloSel.Text = "OV_SEL"
-        '
-        'cmbOvloRng
-        '
-        Me.cmbOvloRng.FormattingEnabled = True
-        Me.cmbOvloRng.Location = New System.Drawing.Point(160, 7)
-        Me.cmbOvloRng.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbOvloRng.Name = "cmbOvloRng"
-        Me.cmbOvloRng.Size = New System.Drawing.Size(156, 24)
-        Me.cmbOvloRng.TabIndex = 2
-        '
-        'lblOvloRng
-        '
-        Me.lblOvloRng.AutoSize = True
-        Me.lblOvloRng.Location = New System.Drawing.Point(12, 11)
-        Me.lblOvloRng.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblOvloRng.Name = "lblOvloRng"
-        Me.lblOvloRng.Size = New System.Drawing.Size(86, 17)
-        Me.lblOvloRng.TabIndex = 1
-        Me.lblOvloRng.Text = "OVLO_RNG"
         '
         'Interrupt
         '
@@ -847,14 +929,14 @@ Partial Class frmMain_mp22
         Me.Interrupt.Location = New System.Drawing.Point(4, 28)
         Me.Interrupt.Name = "Interrupt"
         Me.Interrupt.Padding = New System.Windows.Forms.Padding(3)
-        Me.Interrupt.Size = New System.Drawing.Size(509, 289)
+        Me.Interrupt.Size = New System.Drawing.Size(509, 364)
         Me.Interrupt.TabIndex = 2
         Me.Interrupt.Text = "Interrupt"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 12)
+        Me.Label1.Location = New System.Drawing.Point(23, 23)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(262, 17)
         Me.Label1.TabIndex = 58
@@ -863,7 +945,7 @@ Partial Class frmMain_mp22
         'btnReadInt
         '
         Me.btnReadInt.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnReadInt.Location = New System.Drawing.Point(329, 253)
+        Me.btnReadInt.Location = New System.Drawing.Point(315, 317)
         Me.btnReadInt.Name = "btnReadInt"
         Me.btnReadInt.Size = New System.Drawing.Size(83, 28)
         Me.btnReadInt.TabIndex = 57
@@ -873,7 +955,7 @@ Partial Class frmMain_mp22
         'btnSetInt
         '
         Me.btnSetInt.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnSetInt.Location = New System.Drawing.Point(418, 253)
+        Me.btnSetInt.Location = New System.Drawing.Point(404, 317)
         Me.btnSetInt.Name = "btnSetInt"
         Me.btnSetInt.Size = New System.Drawing.Size(83, 28)
         Me.btnSetInt.TabIndex = 56
@@ -883,7 +965,7 @@ Partial Class frmMain_mp22
         'chkOTMask
         '
         Me.chkOTMask.AutoSize = True
-        Me.chkOTMask.Location = New System.Drawing.Point(17, 220)
+        Me.chkOTMask.Location = New System.Drawing.Point(257, 110)
         Me.chkOTMask.Margin = New System.Windows.Forms.Padding(4)
         Me.chkOTMask.Name = "chkOTMask"
         Me.chkOTMask.Size = New System.Drawing.Size(85, 21)
@@ -894,7 +976,7 @@ Partial Class frmMain_mp22
         'chkOCMask
         '
         Me.chkOCMask.AutoSize = True
-        Me.chkOCMask.Location = New System.Drawing.Point(17, 191)
+        Me.chkOCMask.Location = New System.Drawing.Point(257, 81)
         Me.chkOCMask.Margin = New System.Windows.Forms.Padding(4)
         Me.chkOCMask.Name = "chkOCMask"
         Me.chkOCMask.Size = New System.Drawing.Size(85, 21)
@@ -905,7 +987,7 @@ Partial Class frmMain_mp22
         'chkOVMask
         '
         Me.chkOVMask.AutoSize = True
-        Me.chkOVMask.Location = New System.Drawing.Point(17, 162)
+        Me.chkOVMask.Location = New System.Drawing.Point(257, 52)
         Me.chkOVMask.Margin = New System.Windows.Forms.Padding(4)
         Me.chkOVMask.Name = "chkOVMask"
         Me.chkOVMask.Size = New System.Drawing.Size(85, 21)
@@ -916,7 +998,7 @@ Partial Class frmMain_mp22
         'chkSwitchOnMask
         '
         Me.chkSwitchOnMask.AutoSize = True
-        Me.chkSwitchOnMask.Location = New System.Drawing.Point(17, 133)
+        Me.chkSwitchOnMask.Location = New System.Drawing.Point(26, 139)
         Me.chkSwitchOnMask.Margin = New System.Windows.Forms.Padding(4)
         Me.chkSwitchOnMask.Name = "chkSwitchOnMask"
         Me.chkSwitchOnMask.Size = New System.Drawing.Size(110, 21)
@@ -927,7 +1009,7 @@ Partial Class frmMain_mp22
         'chkTimerOutMask
         '
         Me.chkTimerOutMask.AutoSize = True
-        Me.chkTimerOutMask.Location = New System.Drawing.Point(17, 104)
+        Me.chkTimerOutMask.Location = New System.Drawing.Point(26, 110)
         Me.chkTimerOutMask.Margin = New System.Windows.Forms.Padding(4)
         Me.chkTimerOutMask.Name = "chkTimerOutMask"
         Me.chkTimerOutMask.Size = New System.Drawing.Size(127, 21)
@@ -938,7 +1020,7 @@ Partial Class frmMain_mp22
         'chkPwrOnMask
         '
         Me.chkPwrOnMask.AutoSize = True
-        Me.chkPwrOnMask.Location = New System.Drawing.Point(17, 46)
+        Me.chkPwrOnMask.Location = New System.Drawing.Point(26, 52)
         Me.chkPwrOnMask.Margin = New System.Windows.Forms.Padding(4)
         Me.chkPwrOnMask.Name = "chkPwrOnMask"
         Me.chkPwrOnMask.Size = New System.Drawing.Size(120, 21)
@@ -949,7 +1031,7 @@ Partial Class frmMain_mp22
         'chkOverTagMask
         '
         Me.chkOverTagMask.AutoSize = True
-        Me.chkOverTagMask.Location = New System.Drawing.Point(17, 75)
+        Me.chkOverTagMask.Location = New System.Drawing.Point(26, 81)
         Me.chkOverTagMask.Margin = New System.Windows.Forms.Padding(4)
         Me.chkOverTagMask.Name = "chkOverTagMask"
         Me.chkOverTagMask.Size = New System.Drawing.Size(135, 21)
@@ -976,32 +1058,43 @@ Partial Class frmMain_mp22
         Me.PictureBox1.TabIndex = 28
         Me.PictureBox1.TabStop = False
         '
-        'cmbIsrcVal
+        'cmbAVOP
         '
-        Me.cmbIsrcVal.FormattingEnabled = True
-        Me.cmbIsrcVal.Location = New System.Drawing.Point(160, 107)
-        Me.cmbIsrcVal.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbIsrcVal.Name = "cmbIsrcVal"
-        Me.cmbIsrcVal.Size = New System.Drawing.Size(156, 24)
-        Me.cmbIsrcVal.TabIndex = 56
+        Me.cmbAVOP.FormattingEnabled = True
+        Me.cmbAVOP.Location = New System.Drawing.Point(171, 153)
+        Me.cmbAVOP.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbAVOP.Name = "cmbAVOP"
+        Me.cmbAVOP.Size = New System.Drawing.Size(156, 24)
+        Me.cmbAVOP.TabIndex = 61
         '
-        'cmbIsrcDet
+        'lblAVOP
         '
-        Me.cmbIsrcDet.FormattingEnabled = True
-        Me.cmbIsrcDet.Location = New System.Drawing.Point(160, 138)
-        Me.cmbIsrcDet.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbIsrcDet.Name = "cmbIsrcDet"
-        Me.cmbIsrcDet.Size = New System.Drawing.Size(156, 24)
-        Me.cmbIsrcDet.TabIndex = 57
+        Me.lblAVOP.AutoSize = True
+        Me.lblAVOP.Location = New System.Drawing.Point(23, 160)
+        Me.lblAVOP.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblAVOP.Name = "lblAVOP"
+        Me.lblAVOP.Size = New System.Drawing.Size(103, 17)
+        Me.lblAVOP.TabIndex = 60
+        Me.lblAVOP.Text = "Additional OVP"
         '
-        'cmbVinDuty
+        'cmbSRTune
         '
-        Me.cmbVinDuty.FormattingEnabled = True
-        Me.cmbVinDuty.Location = New System.Drawing.Point(160, 170)
-        Me.cmbVinDuty.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbVinDuty.Name = "cmbVinDuty"
-        Me.cmbVinDuty.Size = New System.Drawing.Size(156, 24)
-        Me.cmbVinDuty.TabIndex = 58
+        Me.cmbSRTune.FormattingEnabled = True
+        Me.cmbSRTune.Location = New System.Drawing.Point(171, 185)
+        Me.cmbSRTune.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbSRTune.Name = "cmbSRTune"
+        Me.cmbSRTune.Size = New System.Drawing.Size(156, 24)
+        Me.cmbSRTune.TabIndex = 63
+        '
+        'lblSRTune
+        '
+        Me.lblSRTune.AutoSize = True
+        Me.lblSRTune.Location = New System.Drawing.Point(23, 192)
+        Me.lblSRTune.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblSRTune.Name = "lblSRTune"
+        Me.lblSRTune.Size = New System.Drawing.Size(119, 17)
+        Me.lblSRTune.TabIndex = 62
+        Me.lblSRTune.Text = "Slew Rate Tuning"
         '
         'frmMain_mp22
         '
@@ -1033,13 +1126,14 @@ Partial Class frmMain_mp22
         Me.theToolbar.ResumeLayout(False)
         Me.theToolbar.PerformLayout()
         Me.pnlFunctions.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
         Me.grpRaised.ResumeLayout(False)
+        Me.TabControl2.ResumeLayout(False)
+        Me.OvpOpCtrl.ResumeLayout(False)
+        Me.OvpOpCtrl.PerformLayout()
+        Me.VinDectCtrl.ResumeLayout(False)
+        Me.VinDectCtrl.PerformLayout()
         Me.grpAdcChannels.ResumeLayout(False)
         Me.grpAdcChannels.PerformLayout()
-        Me.TabControl2.ResumeLayout(False)
-        Me.tbpControl.ResumeLayout(False)
-        Me.tbpControl.PerformLayout()
         CType(Me.trbVinTagReg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Interrupt.ResumeLayout(False)
         Me.Interrupt.PerformLayout()
@@ -1083,13 +1177,7 @@ Partial Class frmMain_mp22
     Friend WithEvents grpAdcChannels As System.Windows.Forms.GroupBox
     Friend WithEvents txtVinAdc As System.Windows.Forms.TextBox
     Friend WithEvents TabControl2 As System.Windows.Forms.TabControl
-    Friend WithEvents tbpControl As System.Windows.Forms.TabPage
-    Friend WithEvents lblVinTagRegVal As System.Windows.Forms.Label
-    Friend WithEvents trbVinTagReg As System.Windows.Forms.TrackBar
-    Friend WithEvents lblVinTagReg As System.Windows.Forms.Label
-    Friend WithEvents lblVinDutyReg As System.Windows.Forms.Label
-    Friend WithEvents lblIsrcDetReg As System.Windows.Forms.Label
-    Friend WithEvents lblIsrcReg As System.Windows.Forms.Label
+    Friend WithEvents OvpOpCtrl As System.Windows.Forms.TabPage
     Friend WithEvents chkVoutEn As System.Windows.Forms.CheckBox
     Friend WithEvents cmbOvloThres As System.Windows.Forms.ComboBox
     Friend WithEvents lblOvloThres As System.Windows.Forms.Label
@@ -1109,16 +1197,10 @@ Partial Class frmMain_mp22
     Friend WithEvents tsbRefresh As System.Windows.Forms.ToolStripLabel
     Friend WithEvents tscRefresh As System.Windows.Forms.ToolStripComboBox
     Friend WithEvents pnlRegisters As System.Windows.Forms.Panel
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents chkSwitchOnSts As System.Windows.Forms.CheckBox
-    Friend WithEvents chkTimeOutSts As System.Windows.Forms.CheckBox
-    Friend WithEvents chkOverTagSts As System.Windows.Forms.CheckBox
-    Friend WithEvents chkPwrOnSts As System.Windows.Forms.CheckBox
     Friend WithEvents grpRaised As System.Windows.Forms.GroupBox
     Friend WithEvents chkOTflag As System.Windows.Forms.CheckBox
     Friend WithEvents chkOCflag As System.Windows.Forms.CheckBox
     Friend WithEvents chkOVflag As System.Windows.Forms.CheckBox
-    Friend WithEvents chkDetectEn As System.Windows.Forms.CheckBox
     Friend WithEvents btnCtrlRead As System.Windows.Forms.Button
     Friend WithEvents btnCtrlSet As System.Windows.Forms.Button
     Friend WithEvents Interrupt As System.Windows.Forms.TabPage
@@ -1133,8 +1215,28 @@ Partial Class frmMain_mp22
     Friend WithEvents chkOverTagMask As System.Windows.Forms.CheckBox
     Friend WithEvents lblVinAdc As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents VinDectCtrl As System.Windows.Forms.TabPage
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents btnVinDetCtrlRead As System.Windows.Forms.Button
+    Friend WithEvents btnVinDetCtrlSet As System.Windows.Forms.Button
     Friend WithEvents cmbVinDuty As System.Windows.Forms.ComboBox
     Friend WithEvents cmbIsrcDet As System.Windows.Forms.ComboBox
     Friend WithEvents cmbIsrcVal As System.Windows.Forms.ComboBox
+    Friend WithEvents chkDetectEn As System.Windows.Forms.CheckBox
+    Friend WithEvents lblVinTagRegVal As System.Windows.Forms.Label
+    Friend WithEvents trbVinTagReg As System.Windows.Forms.TrackBar
+    Friend WithEvents lblVinTagReg As System.Windows.Forms.Label
+    Friend WithEvents lblVinDutyReg As System.Windows.Forms.Label
+    Friend WithEvents lblIsrcDetReg As System.Windows.Forms.Label
+    Friend WithEvents lblIsrcReg As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents chkSwitchOnSts As System.Windows.Forms.CheckBox
+    Friend WithEvents chkTimeOutSts As System.Windows.Forms.CheckBox
+    Friend WithEvents chkOverTagSts As System.Windows.Forms.CheckBox
+    Friend WithEvents chkPwrOnSts As System.Windows.Forms.CheckBox
+    Friend WithEvents cmbSRTune As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSRTune As System.Windows.Forms.Label
+    Friend WithEvents cmbAVOP As System.Windows.Forms.ComboBox
+    Friend WithEvents lblAVOP As System.Windows.Forms.Label
 
 End Class
