@@ -45,7 +45,7 @@ void Notify(pca_data_fields_enum_t field, pca_notify_t result) {
 
 uint16_t _pcaSetRegister(int regNumber, int value) {
 	uint16_t delta = 0;
-	if (regNumber >= 0 && regNumber < PCA9498_REG_COUNT) {
+	if (regNumber >= 0 && regNumber < NX30P6903_REG_COUNT) {
 		uint16_t oldvalue = pca_registers[regNumber].data_bits;
 		pca_registers[regNumber].data_bits = value & 0xFFFF;
 		delta = oldvalue ^ pca_registers[regNumber].data_bits;
@@ -142,7 +142,7 @@ uint8_t _pcaGetRegVal8(int regNumber) {
 
 int pcaGetRegisterValue(int regnumber)
 {
-	if (regnumber >= 0 && regnumber < PCA9498_REG_COUNT)
+	if (regnumber >= 0 && regnumber < NX30P6903_REG_COUNT)
 		return pca_registers[regnumber].data_bits;
 	return -1;
 }
@@ -150,7 +150,7 @@ int pcaGetRegisterValue(int regnumber)
 /* Returns zero if the register is writable */
 int pcaIsRegisterReadOnly(int regnumber)
 {
-	if (regnumber >= 0 && regnumber < PCA9498_REG_COUNT)
+	if (regnumber >= 0 && regnumber < NX30P6903_REG_COUNT)
 		return pca_registers[regnumber].readonly;
 	return true;
 }
@@ -184,7 +184,7 @@ pca_result_t pcaReadDataField(pca_data_fields_enum_t dataField) {
 pca_result_t pcaReadRegister(int regNumber) {
 	uint16_t data;
 	pca_result_t result;
-	if (regNumber < 0 || regNumber >= PCA9498_REG_COUNT) return pca_badParam;
+	if (regNumber < 0 || regNumber >= NX30P6903_REG_COUNT) return pca_badParam;
 	if ((result = (pca_result_t)pc_readRegister(gSla,
 		pca_registers[regNumber].offset,
 		(uint8_t *)&data,
@@ -196,13 +196,8 @@ pca_result_t pcaReadRegister(int regNumber) {
 	return result;
 }
 
+
 pca_result_t pcaReadRegisters(int regNumber, int count) {
-	//pca_result_t result = pca_ok;
-	//int idx;
-	//for (idx = 0; result == pca_ok && idx < PCA9498_REG_COUNT; idx++) {
-	//	result = pcaReadRegister(idx);
-	//}
-	//return result;
 	pca_result_t result = pca_ok;
 	int idx;
 	int bytecount = 0;
@@ -210,6 +205,8 @@ pca_result_t pcaReadRegisters(int regNumber, int count) {
 		bytecount += pca_registers[idx].bitSz / 8;
 	}
 	uint8_t data[0xFF];
+	
+	/*check whether 0x80 the auto increment bit is needed*/
 	if ((result = (pca_result_t)pc_readRegister(gSla, 0x80 | pca_registers[regNumber].offset, (uint8_t *)&data, bytecount)) == pca_ok)
 	{
 		bytecount = 0;
@@ -224,30 +221,8 @@ pca_result_t pcaReadRegisters(int regNumber, int count) {
 
 
 pca_result_t pcaReadAll() {
-	return pcaReadRegisters(0, PCA9498_REG_COUNT);
-	////pca_result_t result = pca_ok;
-	////int idx;
-	////for (idx = 0; result == pca_ok && idx < PCA9498_REG_COUNT; idx++) {
-	////	result = pcaReadRegister(idx);
-	////}
-	////return result;
-	//pca_result_t result = pca_ok;
-	//int idx;
-	//int bytecount = 0;
-	//for (idx = 0; idx < PCA9498_REG_COUNT; idx++) {
-	//	bytecount += pca_registers[idx].bitSz / 8;
-	//}
-	//uint8_t data[0xFF];
-	//if ((result = (pca_result_t)pc_readRegister(gSla, 0x80, (uint8_t *) &data, bytecount)) == pca_ok)
-	//{
-	//	bytecount = 0;
-	//	for (idx = 0; idx < PCA9498_REG_COUNT; idx++) {
-	//		_pcaSetRegisterSwapped(idx, *((int *)&data[bytecount]));
-	//		bytecount += pca_registers[idx].bitSz / 8;
-	//	}
-	//	
-	//}
-	//return result;
+	return pcaReadRegisters(0, NX30P6903_REG_COUNT);
+
 }
 
 pca_result_t pcaSetRegisterAndWrite(int regNumber, int value) {
@@ -308,6 +283,7 @@ pca_result_t pcaWriteAll() {
 	/*Write 0x01 Enable Register*/
 	result = pc_writeRegister(gSla, 0x01, data, 1) == pc_ok ? pca_ok : pca_writeFailed;
 	if (result == pca_ok) {
+		offset = 0;
 		/*Write 0x04-0x07 Int Mask|OVLO|Isrc2Vin|IsrcTime| */
 		for (idx = 4; idx < 0x8; idx++) {
 			data[offset++] = (pca_registers[idx].data_bits & 0xFF);
@@ -315,17 +291,18 @@ pca_result_t pcaWriteAll() {
 		/* Need to check whether tranfer correct data?*/
 		result = pc_writeRegister(gSla, 0x04, data, 0x04) == pc_ok ? pca_ok : pca_writeFailed;
 	}
+	offset = 0;
 	data[offset++] = (pca_registers[0x09].data_bits & 0xFF);
 	/*Write 0x09 Enable Register*/
 	result = pc_writeRegister(gSla, 0x09, data, 1) == pc_ok ? pca_ok : pca_writeFailed;
 	if (result == pca_ok) {
+		offset = 0;
 		/*Write 0x0E-0x0F Int Mask|OVLO|Isrc2Vin|IsrcTime| */
 		for (idx = 0x0E; idx < 0x10; idx++) {
 			data[offset++] = (pca_registers[idx].data_bits & 0xFF);
 		}
 		result = pc_writeRegister(gSla, 0x0E, data, 0x02) == pc_ok ? pca_ok : pca_writeFailed;
 	}
-
 #else
 	for (idx = 1; idx < 3; idx++) {
 		data[offset++] = (pca_registers[idx].data_bits & 0xFF);
