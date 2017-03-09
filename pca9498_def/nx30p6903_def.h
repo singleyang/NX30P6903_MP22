@@ -13,7 +13,7 @@
 
 typedef void(*pca_value_text_func_t)(char *textbuffer, size_t sz, int index);
 
-#define PCA9498_REG_COUNT	0x1C			/* 2 * 8 bit registers are combined into 1 * 16 bit regsister */
+#define NX30P6903_REG_COUNT 0x10			
 
 typedef uint32_t pca_data_bits_t;
 
@@ -35,6 +35,5 @@ typedef struct pca_register {
 	uint8_t bitSz;                          /* The size of the register in bits */
 	pca_data_bits_t data_bits;              /* The register's contents */
 } pca_register_t;
-
 
 #endif  //_NX30P6903_DEF_H_
