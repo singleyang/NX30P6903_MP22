@@ -11,15 +11,6 @@
 #include "nx30p6903_types.h"
 #include <stdio.h>
 
-#ifdef _DEBUG
-//#define PCA9498_AUTO_INC          0x00
-#define PCA9498_AUTO_INC          0x80
-#define MP22_AUTO_INC			0x00
-#else
-#define PCA9498_AUTO_INC          0x80
-#define MP22_AUTO_INC			0x00
-#endif
-
 pca_data_bits_t pca_data_bits_default[] = {
 	/* 00 */ 0x00, 0x00, 0x00, 0x00,
 	/* 04 */ 0xF7, 0x30, 0x00, 0x00,
@@ -291,14 +282,39 @@ void pca_tf_vin_adc(char *textbuffer, size_t sz, int index)
 	}
 }
 
-
+/*Change Vout En lbl*/
+void pca_tf_Vout_En_Dis(char *textbuffer, size_t sz, int index)
+{
+	if (textbuffer && sz > 0) {
+		*textbuffer = '\0';
+		if (sz >= 15) {
+			if (index == 0)
+			sprintf_s(textbuffer, sz, "%s", "Vout Enabled");
+			else
+			sprintf_s(textbuffer, sz, "%s", "Vout Disabled");
+		}
+	}
+}
+/*Change Idect En lbl*/
+void pca_tf_Idect_En_Dis(char *textbuffer, size_t sz, int index)
+{
+	if (textbuffer && sz > 0) {
+		*textbuffer = '\0';
+		if (sz >= 15) {
+			if (index == 0)
+				sprintf_s(textbuffer, sz, "%s", "Idect Enabled");
+			else
+				sprintf_s(textbuffer, sz, "%s", "Idect Disabled");
+		}
+	}
+}
 
 pca_data_field_t pca_DataFields[] = {
 	/*10 datafiled in total*/
-	{ 0x00, 0, 3, 0, dev_id, "Device ID", pca_tf_Three_bits },
-	{ 0x00, 3, 5, 0, dev_rev, "Device revision", pca_tf_Three_bits },
-	{ 0x01, 7, 1, 0, vout_en, "Vout Enable", pca_tf_En_Dis },
-	{ 0x01, 6, 1, 0, detc_en, "Idect Enable", pca_tf_En_Dis },
+	{ 0x00, 0, 4, 0, dev_id, "Device ID", pca_tf_Three_bits },
+	{ 0x00, 4, 4, 0, dev_rev, "Device revision", pca_tf_Three_bits },
+	{ 0x01, 7, 1, 0, vout_en, "Vout Disabled", pca_tf_Vout_En_Dis },
+	{ 0x01, 6, 1, 0, detc_en, "Idect Disabled", pca_tf_Idect_En_Dis },
 	{ 0x02, 7, 1, 0, pwron_sts, "PowerOn Status", pca_tf_En_Dis },
 	{ 0x02, 6, 1, 0, overtag_sts, "OverTag Status", pca_tf_En_Dis },
 	{ 0x02, 5, 1, 0, tmrout_sts, "Timeout Status", pca_tf_En_Dis },
