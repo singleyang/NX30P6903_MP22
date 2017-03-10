@@ -289,7 +289,7 @@ pca_result_t pcaWriteAll() {
 			data[offset++] = (pca_registers[idx].data_bits & 0xFF);
 		}
 		/* Need to check whether tranfer correct data?*/
-		result = pc_writeRegister(gSla, 0x04, data, 0x04) == pc_ok ? pca_ok : pca_writeFailed;
+		result = pc_writeRegister(gSla, MP22_AUTO_INC|0x04, data, 0x04) == pc_ok ? pca_ok : pca_writeFailed;
 	}
 	offset = 0;
 	data[offset++] = (pca_registers[0x09].data_bits & 0xFF);
@@ -301,7 +301,7 @@ pca_result_t pcaWriteAll() {
 		for (idx = 0x0E; idx < 0x10; idx++) {
 			data[offset++] = (pca_registers[idx].data_bits & 0xFF);
 		}
-		result = pc_writeRegister(gSla, 0x0E, data, 0x02) == pc_ok ? pca_ok : pca_writeFailed;
+		result = pc_writeRegister(gSla, MP22_AUTO_INC|0x0E, data, 0x02) == pc_ok ? pca_ok : pca_writeFailed;
 	}
 #else
 	for (idx = 1; idx < 3; idx++) {
