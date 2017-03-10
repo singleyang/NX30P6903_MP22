@@ -13,7 +13,12 @@
 
 typedef void(*pca_value_text_func_t)(char *textbuffer, size_t sz, int index);
 
-#define NX30P6903_REG_COUNT 0x10			
+#define NX30P6903_REG_COUNT 0x10	
+#ifdef _DEBUG
+#define MP22_AUTO_INC			0x80
+#else
+#define MP22_AUTO_INC			0x80
+#endif
 
 typedef uint32_t pca_data_bits_t;
 
