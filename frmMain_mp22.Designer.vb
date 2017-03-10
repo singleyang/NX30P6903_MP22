@@ -76,6 +76,10 @@ Partial Class frmMain_mp22
         Me.chkOVflag = New System.Windows.Forms.CheckBox()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.OvpOpCtrl = New System.Windows.Forms.TabPage()
+        Me.cmbSRTune = New System.Windows.Forms.ComboBox()
+        Me.lblSRTune = New System.Windows.Forms.Label()
+        Me.cmbAVOP = New System.Windows.Forms.ComboBox()
+        Me.lblAVOP = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnCtrlRead = New System.Windows.Forms.Button()
         Me.btnCtrlSet = New System.Windows.Forms.Button()
@@ -116,10 +120,8 @@ Partial Class frmMain_mp22
         Me.chkOverTagMask = New System.Windows.Forms.CheckBox()
         Me.pnlRegisters = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.cmbAVOP = New System.Windows.Forms.ComboBox()
-        Me.lblAVOP = New System.Windows.Forms.Label()
-        Me.cmbSRTune = New System.Windows.Forms.ComboBox()
-        Me.lblSRTune = New System.Windows.Forms.Label()
+        Me.lblVoutEn = New System.Windows.Forms.Label()
+        Me.lblDetectEn = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         Me.grpDevice.SuspendLayout()
         Me.TheMenu.SuspendLayout()
@@ -610,6 +612,7 @@ Partial Class frmMain_mp22
         '
         Me.OvpOpCtrl.BackColor = System.Drawing.SystemColors.Control
         Me.OvpOpCtrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.OvpOpCtrl.Controls.Add(Me.lblVoutEn)
         Me.OvpOpCtrl.Controls.Add(Me.cmbSRTune)
         Me.OvpOpCtrl.Controls.Add(Me.lblSRTune)
         Me.OvpOpCtrl.Controls.Add(Me.cmbAVOP)
@@ -631,6 +634,44 @@ Partial Class frmMain_mp22
         Me.OvpOpCtrl.Size = New System.Drawing.Size(509, 364)
         Me.OvpOpCtrl.TabIndex = 1
         Me.OvpOpCtrl.Text = "OVP Operation Control"
+        '
+        'cmbSRTune
+        '
+        Me.cmbSRTune.FormattingEnabled = True
+        Me.cmbSRTune.Location = New System.Drawing.Point(171, 185)
+        Me.cmbSRTune.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbSRTune.Name = "cmbSRTune"
+        Me.cmbSRTune.Size = New System.Drawing.Size(156, 24)
+        Me.cmbSRTune.TabIndex = 63
+        '
+        'lblSRTune
+        '
+        Me.lblSRTune.AutoSize = True
+        Me.lblSRTune.Location = New System.Drawing.Point(23, 192)
+        Me.lblSRTune.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblSRTune.Name = "lblSRTune"
+        Me.lblSRTune.Size = New System.Drawing.Size(119, 17)
+        Me.lblSRTune.TabIndex = 62
+        Me.lblSRTune.Text = "Slew Rate Tuning"
+        '
+        'cmbAVOP
+        '
+        Me.cmbAVOP.FormattingEnabled = True
+        Me.cmbAVOP.Location = New System.Drawing.Point(171, 153)
+        Me.cmbAVOP.Margin = New System.Windows.Forms.Padding(4)
+        Me.cmbAVOP.Name = "cmbAVOP"
+        Me.cmbAVOP.Size = New System.Drawing.Size(156, 24)
+        Me.cmbAVOP.TabIndex = 61
+        '
+        'lblAVOP
+        '
+        Me.lblAVOP.AutoSize = True
+        Me.lblAVOP.Location = New System.Drawing.Point(23, 160)
+        Me.lblAVOP.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblAVOP.Name = "lblAVOP"
+        Me.lblAVOP.Size = New System.Drawing.Size(103, 17)
+        Me.lblAVOP.TabIndex = 60
+        Me.lblAVOP.Text = "Additional OVP"
         '
         'Label3
         '
@@ -732,6 +773,7 @@ Partial Class frmMain_mp22
         'VinDectCtrl
         '
         Me.VinDectCtrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.VinDectCtrl.Controls.Add(Me.lblDetectEn)
         Me.VinDectCtrl.Controls.Add(Me.Label6)
         Me.VinDectCtrl.Controls.Add(Me.btnVinDetCtrlRead)
         Me.VinDectCtrl.Controls.Add(Me.btnVinDetCtrlSet)
@@ -1058,43 +1100,23 @@ Partial Class frmMain_mp22
         Me.PictureBox1.TabIndex = 28
         Me.PictureBox1.TabStop = False
         '
-        'cmbAVOP
+        'lblVoutEn
         '
-        Me.cmbAVOP.FormattingEnabled = True
-        Me.cmbAVOP.Location = New System.Drawing.Point(171, 153)
-        Me.cmbAVOP.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbAVOP.Name = "cmbAVOP"
-        Me.cmbAVOP.Size = New System.Drawing.Size(156, 24)
-        Me.cmbAVOP.TabIndex = 61
+        Me.lblVoutEn.AutoSize = True
+        Me.lblVoutEn.Location = New System.Drawing.Point(401, 61)
+        Me.lblVoutEn.Name = "lblVoutEn"
+        Me.lblVoutEn.Size = New System.Drawing.Size(51, 17)
+        Me.lblVoutEn.TabIndex = 64
+        Me.lblVoutEn.Text = "Label7"
         '
-        'lblAVOP
+        'lblDetectEn
         '
-        Me.lblAVOP.AutoSize = True
-        Me.lblAVOP.Location = New System.Drawing.Point(23, 160)
-        Me.lblAVOP.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblAVOP.Name = "lblAVOP"
-        Me.lblAVOP.Size = New System.Drawing.Size(103, 17)
-        Me.lblAVOP.TabIndex = 60
-        Me.lblAVOP.Text = "Additional OVP"
-        '
-        'cmbSRTune
-        '
-        Me.cmbSRTune.FormattingEnabled = True
-        Me.cmbSRTune.Location = New System.Drawing.Point(171, 185)
-        Me.cmbSRTune.Margin = New System.Windows.Forms.Padding(4)
-        Me.cmbSRTune.Name = "cmbSRTune"
-        Me.cmbSRTune.Size = New System.Drawing.Size(156, 24)
-        Me.cmbSRTune.TabIndex = 63
-        '
-        'lblSRTune
-        '
-        Me.lblSRTune.AutoSize = True
-        Me.lblSRTune.Location = New System.Drawing.Point(23, 192)
-        Me.lblSRTune.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblSRTune.Name = "lblSRTune"
-        Me.lblSRTune.Size = New System.Drawing.Size(119, 17)
-        Me.lblSRTune.TabIndex = 62
-        Me.lblSRTune.Text = "Slew Rate Tuning"
+        Me.lblDetectEn.AutoSize = True
+        Me.lblDetectEn.Location = New System.Drawing.Point(401, 61)
+        Me.lblDetectEn.Name = "lblDetectEn"
+        Me.lblDetectEn.Size = New System.Drawing.Size(51, 17)
+        Me.lblDetectEn.TabIndex = 72
+        Me.lblDetectEn.Text = "Label7"
         '
         'frmMain_mp22
         '
@@ -1238,5 +1260,7 @@ Partial Class frmMain_mp22
     Friend WithEvents lblSRTune As System.Windows.Forms.Label
     Friend WithEvents cmbAVOP As System.Windows.Forms.ComboBox
     Friend WithEvents lblAVOP As System.Windows.Forms.Label
+    Friend WithEvents lblVoutEn As System.Windows.Forms.Label
+    Friend WithEvents lblDetectEn As System.Windows.Forms.Label
 
 End Class

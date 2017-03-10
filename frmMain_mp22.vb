@@ -18,9 +18,9 @@ Public Class frmMain_mp22
 
 #If DEBUG Then
     'Private Const cSlaBase As Byte = &H34
-    Private Const cSlaBase As Byte = &H65
+    Private Const cSlaBase As Byte = &H36
 #Else
-    Private Const cSlaBase As Byte = &H65
+    Private Const cSlaBase As Byte = &H36
 #End If
 
     Private m_scheduleScan As Int64 = 0
@@ -48,7 +48,9 @@ Public Class frmMain_mp22
         Dim v As New View(lblId, pca_data_fields_enum_t.dev_id)
         v = New View(lblRev, pca_data_fields_enum_t.dev_rev)
         v = New View(chkVoutEn, pca_data_fields_enum_t.vout_en)
+        v = New View(lblVoutEn, pca_data_fields_enum_t.vout_en)
         v = New View(chkDetectEn, pca_data_fields_enum_t.detc_en)
+        v = New View(lblDetectEn, pca_data_fields_enum_t.detc_en)
         v = New View(chkPwrOnSts, pca_data_fields_enum_t.pwron_sts)
         v = New View(chkTimeOutSts, pca_data_fields_enum_t.tmrout_sts)
         v = New View(chkSwitchOnSts, pca_data_fields_enum_t.swon_sts)
