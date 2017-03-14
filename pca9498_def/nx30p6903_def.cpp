@@ -256,16 +256,16 @@ void pca_tf_sr_tune(char *textbuffer, size_t sz, int index)
 	}
 }
 
-
 /*Vin Tag trackbar*/
 void pca_tf_tag_vin(char *textbuffer, size_t sz, int index)
 {
 	if (textbuffer && sz > 0) {
 		*textbuffer = '\0';
 		if (sz >= 10) {
+			float val = index & 0xFF;
 			if (index <= 0xff)
-				/*range from 0 - 29.000V with 5mV per step*/
-				sprintf_s(textbuffer, sz, "%0.3fV", (index * 0.1133));
+				/*range from 0 - 2.5V with 10mV per step*/
+				sprintf_s(textbuffer, sz, "%0.2fV", (val * 0.01));
 		}
 	}
 }
@@ -277,7 +277,7 @@ void pca_tf_vin_adc(char *textbuffer, size_t sz, int index)
 		*textbuffer = '\0';
 		if (sz >= 10) {
 			float val = (index & 0xFF);
-			sprintf_s(textbuffer, sz, "%0.3fV", val*0.1133);
+			sprintf_s(textbuffer, sz, "%0.2fV", val*0.01);
 		}
 	}
 }
@@ -302,9 +302,9 @@ void pca_tf_Idect_En_Dis(char *textbuffer, size_t sz, int index)
 		*textbuffer = '\0';
 		if (sz >= 15) {
 			if (index == 0)
-				sprintf_s(textbuffer, sz, "%s", "Idect Enabled");
-			else
 				sprintf_s(textbuffer, sz, "%s", "Idect Disabled");
+			else
+				sprintf_s(textbuffer, sz, "%s", "Idect Enabled");
 		}
 	}
 }
