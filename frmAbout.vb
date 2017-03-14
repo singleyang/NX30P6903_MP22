@@ -18,10 +18,10 @@
         Me.LabelCompanyName.Text = My.Application.Info.CompanyName
         'Me.lblDesc.Text = "PCA949x evaluation and demonstration utility" & vbCrLf & My.Application.Info.Description
         Me.lblDesc.Text = My.Application.Info.Description
+
     End Sub
 
-    
-    Private Sub btnClose_Click(sender As System.Object, e As System.EventArgs) Handles btnClose.Click
+    Private Sub Close_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Close()
     End Sub
 End Class
